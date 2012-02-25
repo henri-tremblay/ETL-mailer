@@ -1,0 +1,123 @@
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>&Eacute;cole du Tech-Lead - Reminder</title>
+    </head>
+    <body style="background-color: #f5f6f4; margin: 0; padding: 0; font-family: 'Arial'; font-size: 12px;">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f6f4" id="global">
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+                        <tr>
+                            <td align="center" style="padding: 10px 0 10px 0;">
+                                <p style="font-family: 'Arial'; font-size: 10px; color: #666666; margin: 0 0 4px 0;">
+                                    Hello, allez ça serait super sympa si tu pouvais passer 20 secondes &agrave; lire ce mail, thanks &amp; enjoy !
+                                </p>
+                            </td>
+                        </tr>
+						<tr>
+	                        <td height="77" align="left" style="background-color: #353535;">
+	                            <table width="600" border="0" cellspacing="0" cellpadding="0" id="chapeau">
+	                                <tr>
+	                                    <td>
+	                                    	<img src='images/header.png' width="600" height="77" alt="header"/>
+	                                        <p style="text-align: right; margin-right: 0px; margin-top: 0px; font-size: 14px; color: gray; font-family: serif; font-style: italic; ">
+
+                            					Mercredi 1 Juin 2011
+                            				</p>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF;" id="content">
+                        <tr>
+                            <td valign="top" width="560" style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+								
+                                <p style="margin-top: 10px; text-align: justify;">
+                                
+									Le retour d'expérience d'un mouton à <b>8 pattes</b> :
+									
+									<br/>
+									<center>
+										<img src='images/mouton-8-pattes.jpg' width="348" height="300" alt="Hr"/>
+									</center> 
+									<br/>
+									
+									Après avoir été coach, il s'attaque maintenant à un nouveau challenge : tech-lead ! 
+									
+									<br/>
+									<br/>
+									
+									Je cite… Mister <b>GDU</b>, alias <b>Guillaume Duquesnay</b>, alias <b>pilule rouge</b>, alias <b>anti-plouf</b> !
+									
+									<br/>
+									<br/>
+									
+									<img src='images/gdu.jpg' width="100" height="100" alt="Inline" align="right" class="inline" vspace="4" style="border: 1px solid #dedede; padding: 4px;"/>
+
+                                	<p style="margin-top: 10px; text-align: justify;">
+                                		<i>
+                                    		&ldquo;Je pense orienter mon RExp sur le <b>lead</b> plus que sur le <b>tech</b> :
+		                                   	<ul>
+		                                   		<li style="text-align: justify;">la priorisation des efforts de formation de ton équipe/de tes interlocuteurs</li>
+		                                   		<li style="text-align: justify;">l'approche "débutant first"</li>
+		                                   		<li style="text-align: justify;">l'attention fondamentale à porter à l'approche de résolution des problèmes plutôt que la connaissance technique des problèmes et comment transmettre cette approche</li>
+		                                   		<li style="text-align: justify;">ce que 18 mois de support Java/JEE ont appris à une personne qui avait pourtant 8 ans de Java derrière lui !</li>
+		                                   	</ul>
+		                                    Je pense pouvoir aborder des <b>tops sujets</b> - en tout cas qui étaient top quand moi je les ai découverts ! &rdquo;
+	                                    </i>
+                                	</p>
+                                <br>
+                                <div style="text-align: right;padding-right:10px;">
+                                    <b>QuickieReX' du mercredi 1er juin&nbsp;&nbsp;&nbsp;</b>
+                                </div>
+                                
+                                <br>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+                                <h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Et l'internat ?
+                               	</h2>
+                                
+                                <p style="margin-top: 10px; text-align: justify;">
+									En fin de session on réfléchira à un nouveau format pour l'internat du Tech-lead. 
+									<br>
+									En effet, après un rendez-vous raté, suivi d'un peu de Kaizen et de 42 pourquoi, tu seras sollicité pour trouver le meilleur format à un "barecamp" autour du Tech-lead OCTO.
+                                </p>
+
+								<img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+			             		<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase; text-align: right">Come & enjoy !
+			             			<br>
+			                    </h2>
+			                    
+			             	</td>
+	                    </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="560" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="border-top: 2px solid #EDEDED;" align="left">
+                                            <p style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+                                                NDN | L'&Eacute;cole du Tech-Lead OCTO | Juin 2011
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

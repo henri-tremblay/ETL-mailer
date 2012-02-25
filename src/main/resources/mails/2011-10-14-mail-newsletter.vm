@@ -1,0 +1,97 @@
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>&Eacute;cole du Tech-Lead</title>
+    </head>
+    <body style="background-color: #f5f6f4; margin: 0; padding: 0; font-family: 'Arial'; font-size: 12px;">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f6f4" id="global">
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+						<tr>
+	                        <td height="77" align="left" style="background-color: #353535;">
+	                            <table width="600" border="0" cellspacing="0" cellpadding="0" id="chapeau">
+	                                <tr>
+	                                    <td>
+	                                        <img src='images/header.png' width="600" height="77" alt="header"/>
+	                                        <p style="text-align: right; margin-right: 0px; margin-top: 0px; font-size: 14px; color: gray; font-family: serif; font-style: italic; ">
+                            					Vendredi 14 octobre 2011
+                            				</p>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF;" id="content">
+                        <tr>
+                            <td valign="top" width="560" style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+								
+								
+								<center><img style="padding: 0px 22px 0;" src='images/now.jpg' width="200" height="200" /></center>
+								
+								<br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+                                <h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	C'est ce midi <b>(12h30)</b>!
+                               	</h2>
+                               	                                
+                                <p style="margin-top: 10px; text-align: justify;">
+									Nous allons <b>débattre</b> autour de <b>la revue de code</b> dans un format <b>open-space</b> / <b>BBL</b>.<br/>
+									Le but étant de sortir un <b>A4 synthétisant les meilleurs tips & tricks</b>.
+                                </p>
+                                
+                                <br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                	
+								
+								<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Tu hésites encore ?!
+                               	</h2>
+
+                               	<p style="margin-top: 10px; text-align: justify;">
+									C'est pourtant <b>"THE place to be"</b> pour écouter comment les autres mènent leurs revues de code.<br/> 
+									Et tu pourras toujours leur expliquer la vie si tu penses qu'ils s'y prennent comme des mickeys...<img src='images/mickey.png' width="40" height="40"/>
+                                </p>
+                               	
+                            
+								
+									
+                                <br style="clear: both;"/>
+                                
+            
+                                <br/>
+								<br/>
+									
+			             		
+			                    
+			             	</td>
+	                    </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="560" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="border-top: 2px solid #EDEDED;" align="left">
+                                            <p style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+                                                NDN | L'&Eacute;cole du Tech-Lead OCTO | Octobre 2011
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

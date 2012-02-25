@@ -1,0 +1,183 @@
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>&Eacute;cole du Tech-Lead</title>
+<style type="text/css">
+body {
+	background-color: #f5f6f4;
+	margin: 0;
+	padding: 0;
+	font-family: 'Arial';
+	font-size: 12px;
+}
+
+table {
+	border-collapse: collapse;
+	padding: 0;
+	border: 0;
+	background: none;
+}
+
+table.cellules,table.cellules th {
+	border: 1px solid black;
+}
+
+table.cellules td {
+	border-width: 1px;
+	border-style: none solid;
+}
+
+#global {
+	width: 640px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#header {
+	width: 640px;
+	margin: 0;
+	background-color: #353535;
+}
+
+#content {
+	width: 640px;
+	margin: 0;
+	background-color: #FFFFFF;
+}
+</style>
+</head>
+<body>
+	<div id="global">
+		<div id="header">
+			<img src='images/header.png' width="600" height="77" alt="header"
+				style="margin: 5px;" />
+			<p
+				style="text-align: right; margin: 5px; font-size: 14px; color: gray; font-family: serif; font-style: italic;">
+				$date.get('EEEE d MMMM yyyy')</p>
+		</div>
+		<div id="content">
+			<div
+				style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+				<h2
+					style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px; text-transform: uppercase;">
+					Aller plus loin avec son Kanban</h2>
+				<img src='images/hr.gif' width="540" height="27" alt="Hr" /> <img
+					src='images/leurs-secrets-du-kanban.jpg' style="padding: 0px;"
+					width="585" height="229" />
+				<p
+					style="font-family: 'Lucida Grande'; font-size: 12px; font-weight: bold; color: #333333; text-align: left;">
+					Vous l'avez aimé ! vous l'avez plébiscité !
+				<h2
+					style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px; text-transform: uppercase;">
+					Il revient vendredi :</h2>
+				<h2
+					style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px;">
+					Le Kanban, toujours plus loin !</h2>
+				<div
+					style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: justify; padding: 22px 14px 0;">
+					<table class="cellules"
+						style="float: right; width: 210px; margin-top: 10px; text-align: left; font-size: 10px; margin-left: 15px;">
+						<tr>
+							<th>Sujet</th>
+							<th>Vote du<br />public
+							</th>
+							<th>État</th>
+						</tr>
+						<tr>
+							<td>Commen l'équipe peut l'adopter</td>
+							<td>*********</td>
+							<td>DONE</td>
+						</tr>
+						<tr>
+							<td>Workflow Complexe</td>
+							<td>********</td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>Limiter l'encours en début d'IT</td>
+							<td>*****</td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>1 Seul Kanban X Projets</td>
+							<td>***</td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>eKanban Vs. Post-it</td>
+							<td>**</td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>Tâches Tech</td>
+							<td>**</td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>Comment le construire</td>
+							<td>*</td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>Nommage des colonnes</td>
+							<td></td>
+							<td>TODO</td>
+						</tr>
+						<tr>
+							<td>Colonnes facultatives</td>
+							<td></td>
+							<td>TODO</td>
+						</tr>
+					</table>
+					<p>
+						Ton équipe a adopté un Kanban, et depuis la vie est un long fleuve
+						tranquille ? <b>Non ?</b> L'heure est grave, mais tout n'est pas
+						perdu.
+					</p>
+					<p>Viens retrouver la crème des tech-leads d'Octo et apprendre
+						à gérer les workflows retors, les afflux de stories en début
+						d'itération et mille autre subtilités du Kanban dans la vraie vie.
+					</p>
+					<p>La crème des tech-leads, c'est toi ? Alors viens donc
+						montrer aux jeunes blanc-becs comment s'y prend un vrai pro !</p>
+					<p>
+						C'est <b>demain 12h30</b> en salle <b>Armstrong</b> !<br /> Nous
+						parlerons du <b>kanban</b> dans un format open-space / BBL.<br />
+						Le but étant de sortir un A4 synthétisant les meilleurs tips &amp;
+						tricks.
+					</p>
+				</div>
+
+				<div style="text-align: center;">
+					<br style="clear: both;" /> <img src='images/hr.gif' width="540"
+						height="27" alt="Hr" /> <br style="clear: both;" />
+					<div style="display: inline-block;">
+						<p>N'oubliez pas !</p>
+						<div
+							style="width: 100%; margin: 0 auto; font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left;">
+							<ul>
+								<li>When : <b>Demain 12h3O</b></li>
+								<li>What : Plus loin avec le <b>kanban</b></li>
+								<li>Where : Salle Armstrong</li>
+							</ul>
+						</div>
+
+					</div>
+					<br /> <img src='images/hr.gif' width="540" height="27" alt="Hr" />
+				</div>
+				<div>
+					<table width="560" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="border-top: 2px solid #EDEDED;" align="left">
+								<p
+									style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+									NDN | FME | GDU | L'&Eacute;cole du Tech-Lead OCTO | $date.get('MMMM yyyy')</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

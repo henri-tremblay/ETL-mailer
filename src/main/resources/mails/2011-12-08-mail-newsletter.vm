@@ -1,0 +1,172 @@
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>&Eacute;cole du Tech-Lead</title>
+    </head>
+    <body style="background-color: #f5f6f4; margin: 0; padding: 0; font-family: 'Arial'; font-size: 12px;">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f6f4" id="global">
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+						<tr>
+	                        <td height="77" align="left" style="background-color: #353535;">
+	                            <table width="600" border="0" cellspacing="0" cellpadding="0" id="chapeau">
+	                                <tr>
+	                                    <td>
+	                                        <img src='images/header.png' width="600" height="77" alt="header"/>
+	                                        <p style="text-align: right; margin-right: 0px; margin-top: 0px; font-size: 14px; color: gray; font-family: serif; font-style: italic; ">
+                            					Jeudi 8 décembre 2011
+                            				</p>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF;" id="content">
+                        <tr>
+                            <td valign="top" width="560" style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+								
+								<table>
+									<tr>
+										<td>
+											<h2 style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px; text-transform: uppercase;">
+                               					On dépile, on dépile !</h2>
+										</td>
+									</tr>
+								</table>
+								<img src='images/hr.gif' width="540" height="27" alt="Hr"/>								
+								<table>
+									<tr>
+										<td style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left;">
+											<h2 style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px; text-transform: uppercase;">	 
+                               					Demain c'est :
+                               				</h2>
+                               				<h2 style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px;">
+                               					Comment bien construire son Kanban ?
+											</h2>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<p style="margin-top: 10px; text-align: justify;">
+												Des couleurs criardes, d'horribles cartons qui ne collent même pas et surtout une blouse trop grande...<br/>
+												<br/>
+												Non, tu ne veux pas d'un kanban "So 2010" à la IHE !<br/>
+											</p>
+											<p style="font-size: 8px; text-align: justify;">
+												(N'hésite pas à télécharger l'image pour mieux voir)
+											</p>
+										</td>
+										<td>
+											<img src='images/ihe.png' style="padding: 0px 18px 0;" width="200" height="255" />
+										</td>
+									</tr>
+								</table>
+								
+								<p style="margin-top: 12px; text-align: justify;">
+									Workflow, stock, tâche, Definition of Done, <b>que mettre en place</b> et surtout <b>comment</b> ?<br/>
+									<br/>
+									Un kanban c'est comme une copine, c'est bien quand on s'en sert... (BEG)<br/>
+                                </p>
+								
+								<p style="margin-top: 12px; text-align: justify;">
+									C'est <b>demain 12h30</b> en salle <b>poly</b> !<br/>
+									Après 15 minutes d'introduction via un <b>quickie de JSC</b>, nous parlerons du <b>kanban</b> dans un format open-space / BBL.<br/>
+									Le but étant de sortir un A4 synthétisant les meilleurs tips & tricks.
+                                </p>
+                                
+									
+								<br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+                                <h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	What else ?
+                               	</h2>
+                               	
+								<table>
+									<tr>
+										<td style="font-family: 'Lucida Grande'; font-size: 14px; color: #333333; text-align: left;">
+											<p style="margin-top: 10px; text-align: justify;">
+												<b>Tu peux toujours décider de l'avenir de l'école du Tech-Lead :</b><br/>
+												<a href="http://doodle.com/dxia5gghw6aqphg2">Vote !</a> Pour les prochains sujets abordés.<br/><br/>
+											</p>
+										</td>
+										<td>
+											<img src='images/vote.jpeg' style="padding: 0px 18px 0;" width="180" height="140" />
+										</td>
+									</tr>
+								</table>
+								
+								<table>
+									<tr>
+										<td>
+											<img src='images/boxe.jpg' style="padding: 0px 18px 0;" width="180" height="150" />
+										</td>
+										<td style="font-family: 'Lucida Grande'; font-size: 14px; color: #333333; text-align: left;">
+											<p style="margin-top: 10px; text-align: justify;">
+												<b>Les comptes rendus :</b><br/>
+											</p>
+											<ul>
+												<li><a href="https://intranet.octo.com/confluence/display/ReD/CR-GuideRevueDeCode">la revue de code</a></li>
+												<li>la rétrospective technique : <br/>Still in progress...</li>
+												<li>le reporting au client : <br/>Still in progress...</li>
+											</ul>
+										</td>
+									</tr>
+								</table>
+								
+                                <br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                	
+                                <br style="clear: both;"/>
+                                <center>                                
+	            					<table>
+	            						<tr>
+	            							<td>N'oubliez pas !
+	            							</td>
+	            						</tr>
+										<tr>
+											<td style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left;">
+												<ul>
+													<li>When  : <b>Demain 12h3O</b></li>
+													<li>What  : Le guide du bon<b> kanban</b></li>
+													<li>Where : Salle poly</li>
+												</ul>
+											</td>
+										</tr>
+									</table>
+								</center>
+                                <br/>
+                                
+								<img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+			                    
+			             	</td>
+	                    </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="560" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="border-top: 2px solid #EDEDED;" align="left">
+                                            <p style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+                                                NDN | L'&Eacute;cole du Tech-Lead OCTO | Décembre 2011
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

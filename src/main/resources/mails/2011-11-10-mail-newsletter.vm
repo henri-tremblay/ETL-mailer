@@ -1,0 +1,104 @@
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>&Eacute;cole du Tech-Lead</title>
+    </head>
+    <body style="background-color: #f5f6f4; margin: 0; padding: 0; font-family: 'Arial'; font-size: 12px;">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f6f4" id="global">
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+						<tr>
+	                        <td height="77" align="left" style="background-color: #353535;">
+	                            <table width="600" border="0" cellspacing="0" cellpadding="0" id="chapeau">
+	                                <tr>
+	                                    <td>
+	                                        <img src='images/header.png' width="600" height="77" alt="header"/>
+	                                        <p style="text-align: right; margin-right: 0px; margin-top: 0px; font-size: 14px; color: gray; font-family: serif; font-style: italic; ">
+                            					Jeudi 10 novembre
+                            				</p>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+             <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+						<tr>
+							<td>
+                            	<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase; text-align: center;">
+                                	Le reporting du tech-lead au client
+                               	</h2>
+                            	<center><img src='images/reporting.png' style="padding: 0px 22px 0;" width="560" height="250" /></center>
+                            	<br/>
+                        	</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF;" id="content">
+                        <tr>
+                            <td valign="top" width="560" style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+                            
+								<br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+                                <h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	C'est ce midi <b>(12h30)</b> en salle Audiard !
+                               	</h2>
+                               	                                
+                                <p style="margin-top: 12px; text-align: justify;">
+									Mais où donc s'arrête le rôle du tech-lead ?<br>
+									Doit-il fournir au client des indicateurs : de qualité, de productivité, de risque ?
+                                </p>
+								
+								<p style="margin-top: 12px; text-align: justify;">
+									C'est à<b> 12h30</b> en Audiard !<br/>
+									Nous parlerons du <b>reporting au client</b> dans un format open-space / BBL.<br/>
+									Le but étant de sortir un A4 synthétisant les meilleurs tips & tricks.
+                                </p>
+                                
+                                <br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                	
+								
+									
+                                <br style="clear: both;"/>
+                                
+            
+                                <br/>
+								<br/>
+									
+			             		
+			                    
+			             	</td>
+	                    </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="560" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="border-top: 2px solid #EDEDED;" align="left">
+                                            <p style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+                                                NDN | L'&Eacute;cole du Tech-Lead OCTO
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

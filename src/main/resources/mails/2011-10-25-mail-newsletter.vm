@@ -1,0 +1,158 @@
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>&Eacute;cole du Tech-Lead</title>
+    </head>
+    <body style="background-color: #f5f6f4; margin: 0; padding: 0; font-family: 'Arial'; font-size: 12px;">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f6f4" id="global">
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+						<tr>
+	                        <td height="77" align="left" style="background-color: #353535;">
+	                            <table width="600" border="0" cellspacing="0" cellpadding="0" id="chapeau">
+	                                <tr>
+	                                    <td>
+	                                        <img src='images/header.png' width="600" height="77" alt="header"/>
+	                                        <p style="text-align: right; margin-right: 0px; margin-top: 0px; font-size: 14px; color: gray; font-family: serif; font-style: italic; ">
+                            					Mardi 25 octobre 2011
+                            				</p>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF;" id="content">
+                        <tr>
+                            <td valign="top" width="560" style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+								
+								<table>
+									<tr>
+										<td>
+											<h2 style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px; text-transform: uppercase;">
+                               					Vous avez raté...
+											</h2>
+										</td>
+										<td>
+											
+										</td>
+									</tr>
+								</table>
+								
+								<table>
+									<tr>
+										<td style="font-family: 'Lucida Grande'; font-size: 18px; color: #333333; text-align: left;">
+											<p style="margin-top: 10px; text-align: justify;">
+												Le guide de la revue de code
+											</p>
+										</td>
+										<td>
+											<img style="padding: 0px 18px 0;" src='images/sally-code-review.png' width="400" height="315" />
+										</td>
+									</tr>
+								</table>
+								<center>
+									<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+	                                	<a href="https://intranet.octo.com/confluence/display/ReD/CR-GuideRevueDeCode">Voir le CR de l'open space</a>
+	                               	</h2>
+								</center>
+
+								<br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+                                <h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Tu pleures de n'avoir pu être present...<br/>
+                                	Comme je te comprends !
+                               	</h2>
+                               	
+								<table>
+									<tr>
+										<td style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left;">
+											<p style="margin-top: 10px; text-align: justify;">
+												Mais ne t'inquiète pas, la suite arrive dès ce vendredi ! <br/><br/>
+												On dépile toujours les sujets dans l'ordre établi par le <a href="http://doodle.com/dxia5gghw6aqphg2">vote</a> (que vous pouvez toujours modifier).<br/><br/>
+												SO ! What's next ?<br/><br/>
+												<b>La rétrospective Technique</b><br/>
+											</p>
+										</td>
+										<td>
+											<img style="padding: 0px 18px 0;" src='images/retro.jpg' width="180" height="250" />
+										</td>
+									</tr>
+								</table>
+								
+								
+								<p align="left" style="margin-top: 10px; margin-left: 360px;">
+									Pour la photo, ce n'est pas moi... c'est <a href="http://www.google.fr/search?q=retrospective&hl=fr&prmd=imvns&source=lnms&tbm=isch&ei=k6-mTq36NM_c4QShhZ3VAg&sa=X&oi=mode_link&ct=mode&cd=2&ved=0CBcQ_AUoAQ&biw=1436&bih=739#q=retrospective&hl=fr&tbs=ic:gray,isz:m&tbm=isch&prmd=imvns&source=lnt&sa=X&ei=qq-mTqOEFISF4gSz4fz_Dw&ved=0CA8QpwUoAg&bav=on.2,or.r_gc.r_pw.,cf.osb&fp=83f01c43e7ff4cb9&biw=1436&bih=739">google</a>...
+								</p>
+                                
+                                <p style="margin-top: 10px; text-align: justify;">
+									Nous allons donc débattre de la <b>rétrospective Technique</b> dans un format <b>open-space</b> / <b>BBL</b>.<br/>
+									Le but étant de sortir un <b>A4 synthétisant les meilleurs tips & tricks</b>.
+                                </p>
+                                
+                                <br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                	
+								<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Pour résumer :
+                               	</h2>
+                               	
+								<table>
+									<tr>
+										<td style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left;">
+											<ul>
+												<li>When  : <b>Vendredi</b> 28 Octobre </li>
+												<li>What  : Le guide de <b>la rétrospective technique</b></li>
+												<li>Where : Salle poly</li>
+											</ul>
+										</td>
+									</tr>
+								</table>
+
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+								
+								<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Tu hésites encore ?!
+                               	</h2>
+
+                               	<p style="margin-top: 10px; text-align: justify;">
+									C'est pourtant <b>"THE place to be"</b> pour comprendre ce que les autres font de leurs rétro-tech.<br/> 
+									Et tu pourras toujours leur expliquer la vie si tu penses qu'ils s'y prennent comme des mickeys...<img src='images/mickey.png' width="40" height="40"/>
+                                </p>
+                               	
+                                <br style="clear: both;"/>
+            
+                                <br/>
+								<br/>
+			                    
+			             	</td>
+	                    </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="560" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="border-top: 2px solid #EDEDED;" align="left">
+                                            <p style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+                                                NDN | L'&Eacute;cole du Tech-Lead OCTO | Octobre 2011
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

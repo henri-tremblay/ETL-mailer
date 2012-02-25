@@ -1,0 +1,143 @@
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>&Eacute;cole du Tech-Lead - Comm</title>
+    </head>
+    <body style="background-color: #f5f6f4; margin: 0; padding: 0; font-family: 'Arial'; font-size: 12px;">
+        <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f5f6f4" id="global">
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #f5f6f4;" id="header">
+						<tr>
+	                        <td height="77" align="left" style="background-color: #353535;">
+	                            <table width="600" border="0" cellspacing="0" cellpadding="0" id="chapeau">
+	                                <tr>
+	                                    <td>
+	                                        <img src='images/header.png' width="600" height="77" alt="header"/>
+	                                        <p style="text-align: right; margin-right: 0px; margin-top: 0px; font-size: 14px; color: gray; font-family: serif; font-style: italic; ">
+                            					Mercredi 3 août 2011
+                            				</p>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table width="600" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF;" id="content">
+                        <tr>
+                            <td valign="top" width="560" style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left; padding: 22px 14px 0;">
+								
+								<table>
+									<tr>
+										<td>
+											<h2 style="clear: both; color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 20px 0 16px; text-transform: uppercase;">
+                               					Confection de l'arsenal du tech-lead !
+											</h2>
+										</td>
+										<td>
+											<img src='images/coming_soon.jpg' width="180" height="100" />
+										</td>
+									</tr>
+								</table>
+								
+																 
+								
+								
+								
+								
+								<br/>
+                                
+								Si toi aussi : 
+								<table>
+									<tr>
+										<td><img src='images/NRA_logo.png' width="65" height="65" /></td>
+										<td style="font-family: 'Lucida Grande'; font-size: 12px; color: #333333; text-align: left;">
+											<ul>
+												<li>Tu as toujours révé de rejoindre la NRA.</li>
+												<li>D'esssayer une mitrailleuse lourde.</li>
+												<li>De comparer ton gros calibre !</li>
+											</ul>
+										</td>
+									</tr>
+								</table>
+								
+									
+                                <br style="clear: both;"/>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+                                <h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Plus serieusement...
+                               	</h2>
+                                
+                                <p style="margin-top: 10px; text-align: justify;">
+									Voici une liste à la Prevert de sujets chers à tout tech-leads :
+                                </p>
+                                
+                                <ul>
+                                	<li>Le guide du bon <b>kanban</b>: workflow, stock, tache, definition of done</li>
+									<li>Le guide de la <b>revue de code</b></li>
+									<li>Le guide du <b>planning poker</b></li>
+									<li>Le guide du <b>binômage</b></li>
+									<li>Le guide du <b>DSUM</b></li>
+									<li>Le guide du <b>dojo</b></li>
+									<li>Le reporting du tech-lead au client</li>
+								</ul>
+								
+								<p style="margin-top: 10px; text-align: justify;">
+									D'ici quelques semaines, l'école du tech-lead va se réunir sur le sujet qui aura emoustillé le plus d'entre vous !
+									<br/>
+									<br/>
+									Le but étant de sortir un <b>A4 synthétisant les meilleurs tips & tricks</b>. 
+                                </p>
+                                
+                                <img src='images/hr.gif' width="540" height="27" alt="Hr"/>
+                                
+								
+								<h2 style="color: #000000; font-family: 'Lucida Grande'; font-size: 16px; margin: 10px 0 16px; text-transform: uppercase;">
+                                	Par quoi on commence ?
+                               	</h2>
+                                
+								
+								<center>
+									<img src='images/we-need-you.gif' width="100" height="100" alt="We need you !"/>
+									<br/>
+									<b>Viens <a href="http://doodle.com/dxia5gghw6aqphg2">doodler</a> pour TES sujets préférés ! </b>
+								</center>								
+                                
+                                <p style="margin-top: 10px; text-align: justify;">
+									Si jamais tu penses à d'autres sujets non listés, voici le <a href="http://doodle.com/dxia5gghw6aqphg29yr3mdxx/admin" >lien</a> d'administration du doodle. 
+                                </p>
+								
+                                <br/>
+								<br/>
+									
+			             		
+			                    
+			             	</td>
+	                    </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="560" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="border-top: 2px solid #EDEDED;" align="left">
+                                            <p style="margin-top: 14px; margin-bottom: 14px; color: #A1A1A1; font-size: 11px;">
+                                                NDN | L'&Eacute;cole du Tech-Lead OCTO | Juin 2011
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
