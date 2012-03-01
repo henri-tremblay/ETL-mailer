@@ -19,82 +19,61 @@ etlmail.front.gui.ComponentScanMarker.class, //
 public class GuiAppCtx {
     @Bean
     public SwingServerConfiguration serverConfiguration() throws InterruptedException, InvocationTargetException {
-	if (SwingUtilities.isEventDispatchThread()) {
-	    return newServerConfiguration();
-	} else {
-	    final SwingServerConfiguration[] result = new SwingServerConfiguration[1];
-	    SwingUtilities.invokeAndWait(new Runnable() {
-		@Override
-		public void run() {
-		    result[0] = newServerConfiguration();
-		}
-	    });
-	    return result[0];
-	}
-    }
-
-    private SwingServerConfiguration newServerConfiguration() {
-	return new SwingServerConfiguration();
+	return new SwingBean<SwingServerConfiguration>() {
+	    @Override
+	    public SwingServerConfiguration unsafeMakeBean() {
+		return new SwingServerConfiguration();
+	    }
+	}.bean();
     }
 
     @Bean
-    public NewsletterNotificationBuilder newsletterNotificationBuilder() throws InterruptedException, InvocationTargetException {
-	if (SwingUtilities.isEventDispatchThread()) {
-	    return newNewsletterNotificationBuilder();
-	} else {
-	    final NewsletterNotificationBuilder[] result = new NewsletterNotificationBuilder[1];
-	    SwingUtilities.invokeAndWait(new Runnable() {
-		@Override
-		public void run() {
-		    result[0] = newNewsletterNotificationBuilder();
-		}
-	    });
-	    return result[0];
-	}
-    }
-
-    private NewsletterNotificationBuilder newNewsletterNotificationBuilder() {
-	return new NewsletterNotificationBuilder();
+    public NewsletterNotificationBuilder notificationBuilder() throws InterruptedException, InvocationTargetException {
+	return new SwingBean<NewsletterNotificationBuilder>() {
+	    @Override
+	    public NewsletterNotificationBuilder unsafeMakeBean() {
+		return new NewsletterNotificationBuilder();
+	    }
+	}.bean();
     }
 
     @Bean
     public MainFrame mainFrame() throws InterruptedException, InvocationTargetException {
-	if (SwingUtilities.isEventDispatchThread()) {
-	    return newMainFrame();
-	} else {
-	    final MainFrame[] result = new MainFrame[1];
-	    SwingUtilities.invokeAndWait(new Runnable() {
-		@Override
-		public void run() {
-		    result[0] = newMainFrame();
-		}
-	    });
-	    return result[0];
-	}
-    }
-
-    private MainFrame newMainFrame() {
-	final MainFrame mainFrame = new MainFrame();
-	return mainFrame;
+	return new SwingBean<MainFrame>() {
+	    @Override
+	    public MainFrame unsafeMakeBean() {
+		return new MainFrame();
+	    }
+	}.bean();
     }
 
     @Bean
     public MailDefinitionPane mailDefinitionPane() throws InterruptedException, InvocationTargetException {
+	return new SwingBean<MailDefinitionPane>() {
+	    @Override
+	    public MailDefinitionPane unsafeMakeBean() {
+		return new MailDefinitionPane();
+	    }
+	}.bean();
+    }
+}
+
+abstract class SwingBean<T> implements Runnable {
+    private T bean;
+
+    public T bean() throws InterruptedException, InvocationTargetException {
 	if (SwingUtilities.isEventDispatchThread()) {
-	    return newMailDefinitionPanee();
+	    run();
 	} else {
-	    final MailDefinitionPane[] result = new MailDefinitionPane[1];
-	    SwingUtilities.invokeAndWait(new Runnable() {
-		@Override
-		public void run() {
-		    result[0] = newMailDefinitionPanee();
-		}
-	    });
-	    return result[0];
+	    SwingUtilities.invokeAndWait(this);
 	}
+	return bean;
     }
 
-    private MailDefinitionPane newMailDefinitionPanee() {
-	return new MailDefinitionPane();
+    @Override
+    public final void run() {
+	this.bean = unsafeMakeBean();
     }
+
+    protected abstract T unsafeMakeBean();
 }
