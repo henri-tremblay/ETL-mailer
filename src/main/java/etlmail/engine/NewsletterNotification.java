@@ -3,12 +3,9 @@ package etlmail.engine;
 import java.util.Collections;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-
-@Configurable
 public class NewsletterNotification {
     private final String subject;
+    // TODO: fusionner ces deux champs
     private final String template;
     private final String resourcesPath;
     private final String from;
@@ -16,9 +13,9 @@ public class NewsletterNotification {
     private final String cc;
     private final Map<String, Object> variables;
 
-    private @Autowired ToolMailSender toolMailSender;
+    private final ToolMailSender toolMailSender;
 
-    public NewsletterNotification(String subject, String template, String resourcesPath, String from, String to, String cc, Map<String, Object> variables) {
+    public NewsletterNotification(String subject, String template, String resourcesPath, String from, String to, String cc, Map<String, Object> variables, ToolMailSender toolMailSender) {
 	this.subject = subject;
 	this.template = template;
 	this.resourcesPath = resourcesPath;
@@ -26,6 +23,7 @@ public class NewsletterNotification {
 	this.to = to;
 	this.cc = cc;
 	this.variables = variables;
+	this.toolMailSender = toolMailSender;
     }
 
     public void processNotification() {

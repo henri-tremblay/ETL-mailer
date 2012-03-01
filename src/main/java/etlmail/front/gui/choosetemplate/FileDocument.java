@@ -8,7 +8,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.text.*;
 
-import etlmail.front.gui.helper.AbstractDocumentListener;
+import etlmail.front.gui.helper.DocumentAdapter;
 import etlmail.front.gui.helper.ModelUtils;
 
 public class FileDocument implements Document {
@@ -17,7 +17,7 @@ public class FileDocument implements Document {
 
     public FileDocument(Document wrapped) {
 	this.wrapped = wrapped;
-	wrapped.addDocumentListener(new AbstractDocumentListener() {
+	wrapped.addDocumentListener(new DocumentAdapter() {
 	    @Override
 	    protected void update(String newText) {
 		for (final FilenameListener listener : listeners) {

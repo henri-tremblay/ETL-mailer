@@ -22,13 +22,20 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import etlmail.context.ConfigurationData;
 import etlmail.engine.css.CssInliner;
+import etlmail.front.cli.PropertyServerConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ToolMailSenderTest.Mockery.class, ToolMailSender.class, ConfigurationData.class })
+@ContextConfiguration(classes = { ToolMailSenderTest.Mockery.class, ToolMailSenderTest.EngineLessToolMailSender.class, PropertyServerConfiguration.class })
 @DirtiesContext
 public class ToolMailSenderTest {
+
+    static class EngineLessToolMailSender extends ToolMailSender {
+	@Override
+	protected VelocityEngine velocityEngine(String resourcesDirectory) {
+	    return null;
+	}
+    }
 
     @Configuration
     @PropertySource({ "classpath:mailTool.properties" })
@@ -36,11 +43,6 @@ public class ToolMailSenderTest {
 	@Bean
 	public JavaMailSender javaMailSender() {
 	    return createMock(JavaMailSender.class);
-	}
-
-	@Bean
-	public VelocityEngine velocityEngine() {
-	    return createMock(VelocityEngine.class);
 	}
 
 	@Bean

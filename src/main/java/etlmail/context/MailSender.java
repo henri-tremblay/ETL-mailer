@@ -11,9 +11,9 @@ import org.springframework.mail.javamail.*;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MailSender implements JavaMailSender{
+public class MailSender implements JavaMailSender {
 
-    @Autowired private ConfigurationData configuration;
+    @Autowired private ServerConfiguration configuration;
 
     private final JavaMailSenderImpl bean = new JavaMailSenderImpl();
 
@@ -25,9 +25,9 @@ public class MailSender implements JavaMailSender{
     }
 
     private JavaMailSender reconfigure() {
-	bean.setHost(configuration.host);
-	bean.setPort(configuration.port);
-	bean.setUsername(configuration.username);
+	bean.setHost(configuration.getHost());
+	bean.setPort(configuration.getPort());
+	bean.setUsername(configuration.getUsername());
 	bean.setPassword(configuration.getPassword());
 	return bean;
     }
@@ -44,12 +44,12 @@ public class MailSender implements JavaMailSender{
 
     @Override
     public MimeMessage createMimeMessage() {
-	return 	reconfigure().createMimeMessage();
+	return reconfigure().createMimeMessage();
     }
 
     @Override
     public MimeMessage createMimeMessage(InputStream contentStream) throws MailException {
-	return 	reconfigure().createMimeMessage(contentStream);
+	return reconfigure().createMimeMessage(contentStream);
     }
 
     @Override

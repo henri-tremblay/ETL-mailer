@@ -1,10 +1,16 @@
 package etlmail.front.cli;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.velocity.tools.ToolContext;
+import org.apache.velocity.tools.ToolManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 import etlmail.engine.NewsletterNotification;
+import etlmail.engine.ToolMailSender;
 
 @Configuration
 @PropertySource({ "classpath:mailTool.properties" })
@@ -13,7 +19,7 @@ etlmail.context.ComponentScanMarker.class, //
 	etlmail.front.cli.ComponentScanMarker.class //
 })
 public class CliAppCtx {
-    private @Autowired NewsletterNotificationBuilder notificationBuilder;
+    private @Autowired ToolMailSender toolMailSender;
 
     @Bean
     public NewsletterNotification notification( //
@@ -24,13 +30,11 @@ public class CliAppCtx {
 	    @Value("${mail.subject}") String subject, //
 	    @Value("${mail.template}") String template //
     ) {
-	return notificationBuilder //
-		.resourcesPath(resourcesDirectory) //
-		.from(from) //
-		.to(to) //
-		.cc(cc) //
-		.subject(subject) //
-		.template(template) //
-		.build();
+	final Map<String, Object> variables = new HashMap<String, Object>();
+	final ToolManager toolManager = new ToolManager();
+	final ToolContext toolContext = toolManager.createContext();
+	variables.put("date", toolContext.get("date"));
+
+	return new NewsletterNotification(subject, template, resourcesDirectory, from, to, cc, variables, toolMailSender);
     }
 }

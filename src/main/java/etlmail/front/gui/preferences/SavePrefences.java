@@ -1,4 +1,4 @@
-package etlmail.front.gui.application;
+package etlmail.front.gui.preferences;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import com.google.common.io.Closeables;
 
 import etlmail.front.gui.NewsletterNotificationBuilder;
+import etlmail.front.gui.application.ShutdownEvent;
 
 @Component
 public class SavePrefences implements ApplicationListener<ShutdownEvent> {
@@ -26,9 +27,14 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
     private static final String SUBJECT = "subject";
     private static final String TEMPLATE = "template";
 
+    private static final String SERVER = "server";
+    private static final String PORT = "port";
+    private static final String USER = "user";
+
     private static final Logger log = LoggerFactory.getLogger(SavePrefences.class);
 
     private @Autowired NewsletterNotificationBuilder notificationBuilder;
+    private @Autowired SwingServerConfiguration serverConfiguration;
 
     @PostConstruct
     public void init() {
@@ -72,6 +78,13 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 	if (template != null) {
 	    notificationBuilder.template(new File(template));
 	}
+
+	serverConfiguration.setHost(restored.getProperty(SERVER));
+	final String port = restored.getProperty(PORT);
+	if (null != port) {
+	    serverConfiguration.setPort(Integer.parseInt(port));
+	}
+	serverConfiguration.setUsername(restored.getProperty(USER));
     }
 
     @Override
@@ -106,6 +119,10 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 	toSave.setProperty(FROM, notificationBuilder.from());
 	toSave.setProperty(SUBJECT, notificationBuilder.subject());
 	toSave.setProperty(TEMPLATE, notificationBuilder.template().getPath());
+
+	toSave.setProperty(SERVER, serverConfiguration.getHost());
+	toSave.setProperty(PORT, Integer.toString(serverConfiguration.getPort()));
+	toSave.setProperty(USER, serverConfiguration.getUsername());
     }
 
     private void writeProperties(final Properties toSave) {

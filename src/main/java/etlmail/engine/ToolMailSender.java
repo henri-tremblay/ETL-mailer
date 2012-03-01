@@ -1,27 +1,28 @@
 package etlmail.engine;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import javax.mail.internet.MimeMessage;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.VelocityException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.*;
-import org.springframework.stereotype.Component;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import etlmail.engine.css.CssInliner;
 
-@Component
-public class ToolMailSender {
+public abstract class ToolMailSender {
     private @Autowired JavaMailSender javaMailSender;
-    private @Autowired VelocityEngine velocityEngine;
     private @Autowired CssInliner cssInliner;
+
+    protected abstract VelocityEngine velocityEngine(String resourcesDirectory) throws VelocityException, IOException;
 
     public void sendMail(final NewsletterNotification notification) {
 	javaMailSender.send(new MimeMessagePreparator() {
@@ -33,6 +34,7 @@ public class ToolMailSender {
 		message.setFrom(notification.getFrom()); // Set source email
 		message.setSubject(notification.getSubject()); // Set eMail Subject
 
+		VelocityEngine velocityEngine = velocityEngine(notification.getResourcesPath());
 		final String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, notification.getTemplate(), notification.getVariables());
 
 		final Document doc = Jsoup.parse(text);

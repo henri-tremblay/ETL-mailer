@@ -5,29 +5,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import org.simplericity.macify.eawt.Application;
-import org.simplericity.macify.eawt.DefaultApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
-import etlmail.front.gui.MainFrame;
-import etlmail.front.gui.helper.Dialogs;
+import etlmail.front.gui.helper.UserNotifier;
 
+@Component
 public class MailGui implements Runnable {
-
-    public MailGui() {
-	new AnnotationConfigApplicationContext(GuiAppCtx.class);
-    }
+    private @Autowired ExitAction exitAction;
+    private @Autowired UserNotifier notifier;
+    private @Autowired MacListener macListener;
+    private @Autowired JFrame frame;
 
     @Override
     public void run() {
-	final JFrame frame = new MainFrame();
 
 	if (isMac()) {
-	    final Application app = new DefaultApplication();
-	    app.removePreferencesMenuItem();
-	    app.addAboutMenuItem();
-	    app.setEnabledAboutMenu(true);
-	    app.addApplicationListener(new MacListener(frame));
+	    macListener.enable();
 	} else {
 	    addMenuBar(frame);
 	}
@@ -43,11 +38,11 @@ public class MailGui implements Runnable {
 	aboutMenuItem.addActionListener(new ActionListener() {
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-		Dialogs.showAbout(frame);
+		notifier.showAbout();
 	    }
 	});
 	final JMenuItem exitMenuItem = new JMenuItem("exit");
-	exitMenuItem.addActionListener(new ExitAction());
+	exitMenuItem.addActionListener(exitAction);
 	menu.add(aboutMenuItem);
 	menu.add(exitMenuItem);
 	frame.setJMenuBar(menuBar);
@@ -63,6 +58,7 @@ public class MailGui implements Runnable {
 	    System.setProperty("com.apple.mrj.application.apple.menu.about.name", "ETL Mail");
 	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
-	SwingUtilities.invokeLater(new MailGui());
+	final AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(GuiAppCtx.class);
+	SwingUtilities.invokeLater(ctx.getBean(MailGui.class));
     }
 }

@@ -1,23 +1,25 @@
 package etlmail.front.gui.application;
 
-import javax.swing.JFrame;
-
-import org.simplericity.macify.eawt.ApplicationEvent;
-import org.simplericity.macify.eawt.ApplicationListener;
+import org.simplericity.macify.eawt.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
 
-import etlmail.front.gui.helper.Dialogs;
+import etlmail.front.gui.helper.UserNotifier;
+import etlmail.front.gui.preferences.PreferencesWindow;
 
-@Configurable
+@Component
 public class MacListener implements ApplicationListener {
-    private final JFrame frame;
-
     private @Autowired ApplicationEventPublisher eventPublisher;
+    private @Autowired UserNotifier notifier;
 
-    public MacListener(JFrame frame) {
-	this.frame = frame;
+    public void enable() {
+	final Application app = new DefaultApplication();
+	app.addPreferencesMenuItem();
+	app.setEnabledPreferencesMenu(true);
+	app.addAboutMenuItem();
+	app.setEnabledAboutMenu(true);
+	app.addApplicationListener(this);
     }
 
     @Override
@@ -37,7 +39,7 @@ public class MacListener implements ApplicationListener {
 
     @Override
     public void handlePreferences(ApplicationEvent e) {
-
+	new PreferencesWindow().setVisible(true);
     }
 
     @Override
@@ -53,6 +55,6 @@ public class MacListener implements ApplicationListener {
     @Override
     public void handleAbout(ApplicationEvent e) {
 	e.setHandled(true);
-	Dialogs.showAbout(frame);
+	notifier.showAbout();
     }
 }

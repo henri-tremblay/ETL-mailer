@@ -3,7 +3,7 @@ package etlmail.front.gui.helper;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public abstract class AbstractDocumentListener implements DocumentListener {
+public abstract class DocumentAdapter implements DocumentListener {
     @Override
     public final void removeUpdate(DocumentEvent e) {
 	update(e);

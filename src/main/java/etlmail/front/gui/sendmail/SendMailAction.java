@@ -1,4 +1,4 @@
-package etlmail.front.gui.send;
+package etlmail.front.gui.sendmail;
 
 import static javax.swing.SwingWorker.StateValue.DONE;
 
@@ -9,7 +9,6 @@ import java.beans.PropertyChangeListener;
 import java.util.concurrent.ExecutionException;
 
 import javax.swing.JFrame;
-import javax.swing.text.Document;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,28 +16,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import etlmail.front.gui.NewsletterNotificationBuilder;
-import etlmail.front.gui.helper.Dialogs;
-import etlmail.front.gui.helper.ModelUtils;
+import etlmail.front.gui.helper.UserNotifier;
 
 @Configurable
 public class SendMailAction implements ActionListener, PropertyChangeListener {
     private static final Logger log = LoggerFactory.getLogger(SendMailAction.class);
 
     private final JFrame frame;
-    private final Document password;
+    private @Autowired UserNotifier notifier;
 
     private @Autowired NewsletterNotificationBuilder notificationBuilder;
     private ProgressDialog progress;
     private SendMailWorker sendMailWorker;
 
-    public SendMailAction(JFrame frame, Document password) {
+    public SendMailAction(JFrame frame) {
 	this.frame = frame;
-	this.password = password;
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
-	sendMailWorker = new SendMailWorker(notificationBuilder.build(), ModelUtils.getText(password));
+	sendMailWorker = new SendMailWorker(notificationBuilder.build());
 	sendMailWorker.addPropertyChangeListener(this);
 	progress = new ProgressDialog(frame, sendMailWorker);
 	progress.setVisible(true);
@@ -58,7 +55,7 @@ public class SendMailAction implements ActionListener, PropertyChangeListener {
 	    } catch (final ExecutionException e) {
 		final Throwable cause = e.getCause();
 		log.error("Cannot send mail", cause);
-		Dialogs.showError(frame, cause);
+		notifier.showError(cause);
 	    }
 	}
     }

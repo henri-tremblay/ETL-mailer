@@ -3,7 +3,6 @@ package etlmail.front.gui;
 import java.awt.Container;
 
 import javax.swing.*;
-import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Document;
 
 import net.miginfocom.swing.MigLayout;
@@ -11,40 +10,25 @@ import net.miginfocom.swing.MigLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 
 import etlmail.front.gui.choosetemplate.ChooseFileAction;
 import etlmail.front.gui.choosetemplate.FileDocumentChooser;
-import etlmail.front.gui.send.SendMailAction;
+import etlmail.front.gui.sendmail.SendMailAction;
 
-@Configurable
 public class MailDefinitionPane {
     static final Logger log = LoggerFactory.getLogger(MailDefinitionPane.class);
-
-    private final Document password;
 
     private @Autowired NewsletterNotificationBuilder notificationBuilder;
 
     private final JButton fileButton = new JButton("\u2026");
     private final JButton sendButton = new JButton("Send");
 
-    public static void populate(JFrame frame) {
-	final MailDefinitionPane pane = new MailDefinitionPane(new DefaultStyledDocument());
-
-	pane.makeLayout(frame.getContentPane());
-	pane.addButtonActions(frame);
-    }
-
-    MailDefinitionPane(Document password) {
-	this.password = password;
-    }
-
-    private void addButtonActions(JFrame frame) {
+    public void addButtonActions(JFrame frame) {
 	fileButton.addActionListener(new ChooseFileAction(new FileDocumentChooser(notificationBuilder.getTemplate()), frame));
-	sendButton.addActionListener(new SendMailAction(frame, password));
+	sendButton.addActionListener(new SendMailAction(frame));
     }
 
-    private void makeLayout(Container container) {
+    public void makeLayout(Container container, Document password) {
 	container.setLayout(new MigLayout(//
 		"fill", //
 		"[trailing][leading,grow,fill]", //

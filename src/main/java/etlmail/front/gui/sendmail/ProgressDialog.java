@@ -1,4 +1,4 @@
-package etlmail.front.gui.send;
+package etlmail.front.gui.sendmail;
 
 import java.awt.Frame;
 import java.awt.event.ComponentAdapter;
