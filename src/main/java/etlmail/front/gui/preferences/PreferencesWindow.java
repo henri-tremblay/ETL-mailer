@@ -1,5 +1,7 @@
 package etlmail.front.gui.preferences;
 
+import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
+
 import java.awt.Container;
 
 import javax.annotation.PostConstruct;
@@ -8,13 +10,22 @@ import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import etlmail.front.gui.application.WindowJanitor;
 import etlmail.front.gui.helper.InvokeAndWait;
 
+@Component
+@Scope(SCOPE_PROTOTYPE)
 @SuppressWarnings("serial")
 public class PreferencesWindow extends JFrame {
     @Autowired SwingServerConfiguration serverConfiguration;
+
+    @InvokeAndWait
+    public PreferencesWindow() {
+
+    }
 
     @PostConstruct
     @InvokeAndWait

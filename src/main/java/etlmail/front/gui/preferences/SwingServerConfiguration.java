@@ -5,9 +5,13 @@ import static etlmail.front.gui.helper.ModelUtils.setText;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Document;
 
+import org.springframework.stereotype.Component;
+
 import etlmail.context.ServerConfiguration;
 import etlmail.front.gui.helper.DocumentAdapter;
+import etlmail.front.gui.helper.InvokeAndWait;
 
+@Component
 public class SwingServerConfiguration implements ServerConfiguration {
 
     private final Document hostDocument = new DefaultStyledDocument();
@@ -20,9 +24,7 @@ public class SwingServerConfiguration implements ServerConfiguration {
     private volatile String username;
     private volatile String password;
 
-    /**
-     * Only call from the EDT
-     */
+    @InvokeAndWait
     public SwingServerConfiguration() {
 	hostDocument.addDocumentListener(new DocumentAdapter() {
 	    @Override

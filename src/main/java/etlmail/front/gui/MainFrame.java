@@ -8,17 +8,24 @@ import javax.swing.JFrame;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
 
 import etlmail.front.gui.application.ShutdownEvent;
 import etlmail.front.gui.application.WindowJanitor;
 import etlmail.front.gui.helper.InvokeAndWait;
 import etlmail.front.gui.preferences.SwingServerConfiguration;
 
+@Component
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
     private @Autowired ApplicationEventPublisher eventPublisher;
     private @Autowired SwingServerConfiguration serverConfiguration;
     private @Autowired MailDefinitionPane pane;
+
+    @InvokeAndWait
+    public MainFrame() {
+
+    }
 
     @PostConstruct
     @InvokeAndWait

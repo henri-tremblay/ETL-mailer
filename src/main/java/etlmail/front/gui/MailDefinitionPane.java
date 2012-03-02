@@ -10,11 +10,14 @@ import net.miginfocom.swing.MigLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import etlmail.front.gui.choosetemplate.ChooseFileAction;
 import etlmail.front.gui.choosetemplate.FileDocumentChooser;
+import etlmail.front.gui.helper.InvokeAndWait;
 import etlmail.front.gui.sendmail.SendMailAction;
 
+@Component
 public class MailDefinitionPane {
     static final Logger log = LoggerFactory.getLogger(MailDefinitionPane.class);
 
@@ -23,6 +26,11 @@ public class MailDefinitionPane {
 
     private final JButton fileButton = new JButton("\u2026");
     private final JButton sendButton = new JButton("Send");
+
+    @InvokeAndWait
+    public MailDefinitionPane() {
+
+    }
 
     public void addButtonActions(JFrame frame) {
 	fileButton.addActionListener(new ChooseFileAction(new FileDocumentChooser(notificationBuilder.getTemplate()), frame));

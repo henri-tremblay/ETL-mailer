@@ -1,15 +1,11 @@
 package etlmail.front.gui.application;
 
-import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
-
 import javax.swing.SwingWorker;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 
-import etlmail.front.gui.*;
-import etlmail.front.gui.helper.InvokeAndWait;
-import etlmail.front.gui.preferences.PreferencesWindow;
-import etlmail.front.gui.preferences.SwingServerConfiguration;
+import etlmail.front.gui.MainFrame;
 import etlmail.front.gui.sendmail.ProgressDialog;
 import etlmail.front.gui.sendmail.SendMailAction;
 
@@ -18,46 +14,15 @@ import etlmail.front.gui.sendmail.SendMailAction;
 etlmail.front.gui.ComponentScanMarker.class, //
 	etlmail.context.ComponentScanMarker.class //
 })
-public class GuiAppCtx implements PreferencesWindowProvider {
+public class GuiAppCtx {
     @Bean
-    public SendMailAction sendMailAction() {
+    @Autowired
+    public SendMailAction sendMailAction(final MainFrame mainFrame) {
 	return new SendMailAction() {
 	    @Override
 	    protected ProgressDialog makeProgressDialog(SwingWorker<?, ?> sendMailWorker) {
-		return new ProgressDialog(mainFrame(), sendMailWorker);
+		return new ProgressDialog(mainFrame, sendMailWorker);
 	    }
 	};
-    }
-
-    @Bean
-    @InvokeAndWait
-    public SwingServerConfiguration serverConfiguration() {
-	return new SwingServerConfiguration();
-    }
-
-    @Bean
-    @InvokeAndWait
-    public NewsletterNotificationBuilder notificationBuilder() {
-	return new NewsletterNotificationBuilder();
-    }
-
-    @Bean
-    @InvokeAndWait
-    public MainFrame mainFrame() {
-	return new MainFrame();
-    }
-
-    @Bean
-    @InvokeAndWait
-    public MailDefinitionPane mailDefinitionPane() {
-	return new MailDefinitionPane();
-    }
-
-    @Override
-    @Bean
-    @InvokeAndWait
-    @Scope(SCOPE_PROTOTYPE)
-    public PreferencesWindow preferencesWindow() {
-	return new PreferencesWindow();
     }
 }

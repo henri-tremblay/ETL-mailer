@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class SwingPolicies {
     private final Logger log = LoggerFactory.getLogger(SwingPolicies.class);
 
-    @Around("execution(@InvokeAndWait * *(..))")
+    @Around("execution(@InvokeAndWait * *(..)) || execution(@InvokeAndWait new(..))")
     public Object callOnEdt(final ProceedingJoinPoint thisJoinPoint) throws Throwable {
 	if (SwingUtilities.isEventDispatchThread()) {
 	    return thisJoinPoint.proceed();
@@ -35,12 +35,5 @@ public class SwingPolicies {
 		throw ew.getCause();
 	    }
 	}
-    }
-}
-
-@SuppressWarnings("serial")
-class ExceptionWrapper extends RuntimeException {
-    public ExceptionWrapper(Throwable cause) {
-	super(cause);
     }
 }

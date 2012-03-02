@@ -12,13 +12,16 @@ import javax.swing.text.Document;
 import org.apache.velocity.tools.ToolContext;
 import org.apache.velocity.tools.ToolManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import etlmail.engine.NewsletterNotification;
 import etlmail.engine.ToolMailSender;
 import etlmail.front.gui.choosetemplate.FileDocument;
 import etlmail.front.gui.choosetemplate.FilenameListener;
 import etlmail.front.gui.helper.DocumentAdapter;
+import etlmail.front.gui.helper.InvokeAndWait;
 
+@Component
 public class NewsletterNotificationBuilder {
     private final Document subjectDocument = new DefaultStyledDocument();
     private final FileDocument templateDocument = new FileDocument();
@@ -34,9 +37,7 @@ public class NewsletterNotificationBuilder {
 
     private @Autowired ToolMailSender toolMailSender;
 
-    /**
-     * Only call from the EDT
-     */
+    @InvokeAndWait
     public NewsletterNotificationBuilder() {
 	final ToolManager toolManager = new ToolManager();
 	final ToolContext toolContext = toolManager.createContext();

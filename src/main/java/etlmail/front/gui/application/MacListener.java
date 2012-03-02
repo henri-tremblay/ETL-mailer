@@ -1,17 +1,19 @@
 package etlmail.front.gui.application;
 
 import org.simplericity.macify.eawt.*;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import etlmail.front.gui.helper.UserNotifier;
+import etlmail.front.gui.preferences.PreferencesWindow;
 
 @Component
 public class MacListener implements ApplicationListener {
     private @Autowired ApplicationEventPublisher eventPublisher;
     private @Autowired UserNotifier notifier;
-    private @Autowired PreferencesWindowProvider preferencesWindowProvider;
+    private @Autowired ObjectFactory<PreferencesWindow> preferencesWindowProvider;
 
     public void enable() {
 	final Application app = new DefaultApplication();
@@ -39,7 +41,7 @@ public class MacListener implements ApplicationListener {
 
     @Override
     public void handlePreferences(ApplicationEvent e) {
-	preferencesWindowProvider.preferencesWindow().setVisible(true);
+	preferencesWindowProvider.getObject().setVisible(true);
     }
 
     @Override
