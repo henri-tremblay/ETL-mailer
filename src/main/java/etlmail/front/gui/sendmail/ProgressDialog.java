@@ -9,14 +9,12 @@ import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 
 import etlmail.front.gui.application.WindowJanitor;
 
 @SuppressWarnings("serial")
-@Configurable
 public class ProgressDialog extends JDialog {
-    ProgressDialog(Frame parent, final SwingWorker<?, ?> worker) {
+    public ProgressDialog(Frame parent, final SwingWorker<?, ?> worker) {
 	super(parent, "Sending mail", true);
 	setLayout(new MigLayout());
 	setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

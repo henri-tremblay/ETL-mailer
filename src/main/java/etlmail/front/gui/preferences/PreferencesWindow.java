@@ -8,16 +8,16 @@ import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 
 import etlmail.front.gui.application.WindowJanitor;
+import etlmail.front.gui.helper.InvokeAndWait;
 
-@Configurable
 @SuppressWarnings("serial")
 public class PreferencesWindow extends JFrame {
     @Autowired SwingServerConfiguration serverConfiguration;
 
     @PostConstruct
+    @InvokeAndWait
     public void init() {
 	setTitle("Preferences");
 	makeLayout(getContentPane());

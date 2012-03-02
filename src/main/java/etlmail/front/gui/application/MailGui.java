@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import etlmail.front.gui.MainFrame;
 import etlmail.front.gui.helper.UserNotifier;
 
 @Component
@@ -16,7 +17,7 @@ public class MailGui implements Runnable {
     private @Autowired ExitAction exitAction;
     private @Autowired UserNotifier notifier;
     private @Autowired MacListener macListener;
-    private @Autowired JFrame frame;
+    private @Autowired MainFrame frame;
 
     @Override
     public void run() {

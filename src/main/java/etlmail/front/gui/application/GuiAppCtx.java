@@ -1,79 +1,63 @@
 package etlmail.front.gui.application;
 
-import java.lang.reflect.InvocationTargetException;
+import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
 
-import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
-import org.springframework.beans.factory.aspectj.EnableSpringConfigured;
 import org.springframework.context.annotation.*;
 
 import etlmail.front.gui.*;
+import etlmail.front.gui.helper.InvokeAndWait;
+import etlmail.front.gui.preferences.PreferencesWindow;
 import etlmail.front.gui.preferences.SwingServerConfiguration;
+import etlmail.front.gui.sendmail.ProgressDialog;
+import etlmail.front.gui.sendmail.SendMailAction;
 
 @Configuration
 @ComponentScan(basePackageClasses = { //
 etlmail.front.gui.ComponentScanMarker.class, //
 	etlmail.context.ComponentScanMarker.class //
 })
-@EnableSpringConfigured
-public class GuiAppCtx {
+public class GuiAppCtx implements PreferencesWindowProvider {
     @Bean
-    public SwingServerConfiguration serverConfiguration() throws InterruptedException, InvocationTargetException {
-	return new SwingBean<SwingServerConfiguration>() {
+    public SendMailAction sendMailAction() {
+	return new SendMailAction() {
 	    @Override
-	    public SwingServerConfiguration unsafeMakeBean() {
-		return new SwingServerConfiguration();
+	    protected ProgressDialog makeProgressDialog(SwingWorker<?, ?> sendMailWorker) {
+		return new ProgressDialog(mainFrame(), sendMailWorker);
 	    }
-	}.bean();
+	};
     }
 
     @Bean
-    public NewsletterNotificationBuilder notificationBuilder() throws InterruptedException, InvocationTargetException {
-	return new SwingBean<NewsletterNotificationBuilder>() {
-	    @Override
-	    public NewsletterNotificationBuilder unsafeMakeBean() {
-		return new NewsletterNotificationBuilder();
-	    }
-	}.bean();
+    @InvokeAndWait
+    public SwingServerConfiguration serverConfiguration() {
+	return new SwingServerConfiguration();
     }
 
     @Bean
-    public MainFrame mainFrame() throws InterruptedException, InvocationTargetException {
-	return new SwingBean<MainFrame>() {
-	    @Override
-	    public MainFrame unsafeMakeBean() {
-		return new MainFrame();
-	    }
-	}.bean();
+    @InvokeAndWait
+    public NewsletterNotificationBuilder notificationBuilder() {
+	return new NewsletterNotificationBuilder();
     }
 
     @Bean
-    public MailDefinitionPane mailDefinitionPane() throws InterruptedException, InvocationTargetException {
-	return new SwingBean<MailDefinitionPane>() {
-	    @Override
-	    public MailDefinitionPane unsafeMakeBean() {
-		return new MailDefinitionPane();
-	    }
-	}.bean();
+    @InvokeAndWait
+    public MainFrame mainFrame() {
+	return new MainFrame();
     }
-}
 
-abstract class SwingBean<T> implements Runnable {
-    private T bean;
-
-    public T bean() throws InterruptedException, InvocationTargetException {
-	if (SwingUtilities.isEventDispatchThread()) {
-	    run();
-	} else {
-	    SwingUtilities.invokeAndWait(this);
-	}
-	return bean;
+    @Bean
+    @InvokeAndWait
+    public MailDefinitionPane mailDefinitionPane() {
+	return new MailDefinitionPane();
     }
 
     @Override
-    public final void run() {
-	this.bean = unsafeMakeBean();
+    @Bean
+    @InvokeAndWait
+    @Scope(SCOPE_PROTOTYPE)
+    public PreferencesWindow preferencesWindow() {
+	return new PreferencesWindow();
     }
-
-    protected abstract T unsafeMakeBean();
 }

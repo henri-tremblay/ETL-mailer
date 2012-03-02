@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
-import org.springframework.beans.factory.aspectj.EnableSpringConfigured;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
@@ -14,7 +13,6 @@ import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import etlmail.engine.ToolMailSender;
 
 @Configuration
-@EnableSpringConfigured
 @ComponentScan(basePackageClasses = { //
 etlmail.context.ComponentScanMarker.class, //
 	etlmail.engine.ComponentScanMarker.class //

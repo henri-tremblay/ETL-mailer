@@ -19,13 +19,14 @@ public class MailDefinitionPane {
     static final Logger log = LoggerFactory.getLogger(MailDefinitionPane.class);
 
     private @Autowired NewsletterNotificationBuilder notificationBuilder;
+    private @Autowired SendMailAction sendMailAction;
 
     private final JButton fileButton = new JButton("\u2026");
     private final JButton sendButton = new JButton("Send");
 
     public void addButtonActions(JFrame frame) {
 	fileButton.addActionListener(new ChooseFileAction(new FileDocumentChooser(notificationBuilder.getTemplate()), frame));
-	sendButton.addActionListener(new SendMailAction(frame));
+	sendButton.addActionListener(sendMailAction);
     }
 
     public void makeLayout(Container container, Document password) {

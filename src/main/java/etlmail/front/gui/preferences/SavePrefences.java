@@ -1,11 +1,9 @@
 package etlmail.front.gui.preferences;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
-import javax.swing.SwingUtilities;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +15,7 @@ import com.google.common.io.Closeables;
 
 import etlmail.front.gui.NewsletterNotificationBuilder;
 import etlmail.front.gui.application.ShutdownEvent;
+import etlmail.front.gui.helper.InvokeAndWait;
 
 @Component
 public class SavePrefences implements ApplicationListener<ShutdownEvent> {
@@ -38,8 +37,7 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 
     @PostConstruct
     public void init() {
-	final Properties restored = readProperties();
-	builderFromProperties(restored);
+	fromProperties(readProperties());
     }
 
     private Properties readProperties() {
@@ -57,20 +55,8 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 	return restored;
     }
 
-    private void builderFromProperties(final Properties restored) {
-	if (SwingUtilities.isEventDispatchThread()) {
-	    restoreProperties(restored);
-	} else {
-	    SwingUtilities.invokeLater(new Runnable() {
-		@Override
-		public void run() {
-		    restoreProperties(restored);
-		}
-	    });
-	}
-    }
-
-    private void restoreProperties(final Properties restored) {
+    @InvokeAndWait
+    private void fromProperties(final Properties restored) {
 	notificationBuilder.to(restored.getProperty(TO));
 	notificationBuilder.from(restored.getProperty(FROM));
 	notificationBuilder.subject(restored.getProperty(SUBJECT));
@@ -89,32 +75,12 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 
     @Override
     public void onApplicationEvent(ShutdownEvent event) {
-	final Properties toSave = propertiesFromBuilder();
-	writeProperties(toSave);
+	writeProperties(toProperties());
     }
 
-    private Properties propertiesFromBuilder() {
+    @InvokeAndWait
+    private Properties toProperties() {
 	final Properties toSave = new Properties();
-	if (SwingUtilities.isEventDispatchThread()) {
-	    setProperties(toSave);
-	} else {
-	    try {
-		SwingUtilities.invokeAndWait(new Runnable() {
-		    @Override
-		    public void run() {
-			setProperties(toSave);
-		    }
-		});
-	    } catch (final InterruptedException e) {
-		throw new IllegalStateException(e);
-	    } catch (final InvocationTargetException e) {
-		throw new IllegalStateException(e);
-	    }
-	}
-	return toSave;
-    }
-
-    private void setProperties(final Properties toSave) {
 	toSave.setProperty(TO, notificationBuilder.to());
 	toSave.setProperty(FROM, notificationBuilder.from());
 	toSave.setProperty(SUBJECT, notificationBuilder.subject());
@@ -123,6 +89,8 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 	toSave.setProperty(SERVER, serverConfiguration.getHost());
 	toSave.setProperty(PORT, Integer.toString(serverConfiguration.getPort()));
 	toSave.setProperty(USER, serverConfiguration.getUsername());
+
+	return toSave;
     }
 
     private void writeProperties(final Properties toSave) {

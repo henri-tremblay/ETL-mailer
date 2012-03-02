@@ -4,7 +4,7 @@ import javax.swing.SwingWorker;
 
 import etlmail.engine.NewsletterNotification;
 
-class SendMailWorker extends SwingWorker<Void, Void> {
+public class SendMailWorker extends SwingWorker<Void, Void> {
     private final NewsletterNotification notification;
 
     SendMailWorker(NewsletterNotification notification) {
