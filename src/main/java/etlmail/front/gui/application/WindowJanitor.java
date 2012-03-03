@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class WindowJanitor implements ApplicationListener<ShutdownEvent> {
-    private static final Map<Window, Window> windows = new WeakHashMap<Window, Window>();
+    private final Map<Window, Window> windows = new WeakHashMap<Window, Window>();
 
     @Override
     public void onApplicationEvent(ShutdownEvent event) {
