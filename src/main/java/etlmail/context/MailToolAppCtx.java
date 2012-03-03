@@ -2,15 +2,13 @@ package etlmail.context;
 
 import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
 
-import java.io.IOException;
-
 import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.exception.VelocityException;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.log.CommonsLogLogChute;
 import org.apache.velocity.tools.ToolContext;
 import org.apache.velocity.tools.ToolManager;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 
 import etlmail.engine.ToolMailSender;
 
@@ -30,14 +28,11 @@ public class MailToolAppCtx {
     public ToolMailSender toolMailSender() {
 	return new ToolMailSender() {
 	    @Override
-	    protected VelocityEngine velocityEngine(String resourcesDirectory) throws VelocityException, IOException {
-		// TODO se passer de la factory
-		final VelocityEngineFactoryBean bean = new VelocityEngineFactoryBean();
-		bean.setVelocityProperties(new PropertyBuilder() //
-			.key("class.resource.loader.class").yields("org.apache.velocity.runtime.resource.loader.FileResourceLoader") //
-			.key("file.resource.loader.path").yields(resourcesDirectory) //
-			.asProperties());
-		return bean.createVelocityEngine();
+	    protected VelocityEngine velocityEngine(String resourcesDirectory) {
+		final VelocityEngine velocityEngine = new VelocityEngine();
+		velocityEngine.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourcesDirectory);
+		velocityEngine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, CommonsLogLogChute.class.getName());
+		return velocityEngine;
 	    }
 	};
     }
