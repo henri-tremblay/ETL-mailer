@@ -1,5 +1,7 @@
 package etlmail.front.gui.application;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 import javax.swing.SwingUtilities;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -20,19 +22,19 @@ public class SwingPolicies {
 	    return thisJoinPoint.proceed();
 	} else {
 	    try {
-		final Object[] result = new Object[1];
+		final AtomicReference<Object> result = new AtomicReference<Object>();
 		log.info("Waiting for EDT");
 		SwingUtilities.invokeAndWait(new Runnable() {
 		    @Override
 		    public void run() {
 			try {
-			    result[0] = thisJoinPoint.proceed();
+			    result.set(thisJoinPoint.proceed());
 			} catch (final Throwable e) {
 			    throw new ExceptionWrapper(e);
 			}
 		    }
 		});
-		return result[0];
+		return result.get();
 	    } catch (final ExceptionWrapper ew) {
 		throw ew.getCause();
 	    }
