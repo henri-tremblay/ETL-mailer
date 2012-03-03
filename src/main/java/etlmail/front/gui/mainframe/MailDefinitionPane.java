@@ -36,6 +36,7 @@ public class MailDefinitionPane {
     public void addButtonActions(JFrame frame) {
 	fileButton.addActionListener(new ChooseFileAction(new FileDocumentChooser(notificationBuilder.getTemplate()), frame));
 	sendButton.addActionListener(sendMailAction);
+	frame.getRootPane().setDefaultButton(sendButton);
     }
 
     public void makeLayout(Container container, Document password) {
