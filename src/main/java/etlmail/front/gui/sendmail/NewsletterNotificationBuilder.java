@@ -9,8 +9,6 @@ import java.util.Map;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Document;
 
-import org.apache.velocity.tools.ToolContext;
-import org.apache.velocity.tools.ToolManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,11 +37,6 @@ public class NewsletterNotificationBuilder {
 
     @InvokeAndWait
     public NewsletterNotificationBuilder() {
-	final ToolManager toolManager = new ToolManager();
-	final ToolContext toolContext = toolManager.createContext();
-
-	variables.put("date", toolContext.get("date"));
-
 	subjectDocument.addDocumentListener(new DocumentAdapter() {
 	    @Override
 	    protected void update(String newText) {

@@ -9,6 +9,7 @@ import java.util.*;
 import junit.framework.Assert;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.tools.ToolContext;
 import org.easymock.EasyMockSupport;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
@@ -48,6 +49,11 @@ public class ToolMailSenderTest {
 	@Bean
 	public CssInliner cssInliner() {
 	    return createMock(CssInliner.class);
+	}
+
+	@Bean
+	public ToolContext toolContext() {
+	    return createMock(ToolContext.class);
 	}
 
 	@Bean

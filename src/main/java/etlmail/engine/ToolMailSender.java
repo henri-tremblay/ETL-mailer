@@ -1,26 +1,32 @@
 package etlmail.engine;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import javax.mail.internet.MimeMessage;
 
+import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
+import org.apache.velocity.tools.ToolContext;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.*;
-import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import etlmail.engine.css.CssInliner;
+import etlmail.front.gui.application.SwingPolicies;
 
 public abstract class ToolMailSender {
+    private final Logger log = LoggerFactory.getLogger(SwingPolicies.class);
+
     private @Autowired JavaMailSender javaMailSender;
     private @Autowired CssInliner cssInliner;
+    private @Autowired ToolContext toolContext;
 
     protected abstract VelocityEngine velocityEngine(String resourcesDirectory) throws VelocityException, IOException;
 
@@ -34,8 +40,7 @@ public abstract class ToolMailSender {
 		message.setFrom(notification.getFrom()); // Set source email
 		message.setSubject(notification.getSubject()); // Set eMail Subject
 
-		VelocityEngine velocityEngine = velocityEngine(notification.getResourcesPath());
-		final String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, notification.getTemplate(), notification.getVariables());
+		final String text = render(notification);
 
 		final Document doc = Jsoup.parse(text);
 
@@ -52,6 +57,14 @@ public abstract class ToolMailSender {
 		}
 	    }
 	});
+    }
+
+    private String render(final NewsletterNotification notification) throws IOException {
+	final VelocityEngine velocityEngine = velocityEngine(notification.getResourcesPath());
+	final StringWriter result = new StringWriter();
+	final VelocityContext velocityContext = new VelocityContext(notification.getVariables(), toolContext);
+	velocityEngine.mergeTemplate(notification.getTemplate(), "UTF-8", velocityContext, result);
+	return result.toString();
     }
 
     List<String> getAddressesFromString(String addresses) {

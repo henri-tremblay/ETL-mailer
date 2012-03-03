@@ -3,8 +3,6 @@ package etlmail.front.cli;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.velocity.tools.ToolContext;
-import org.apache.velocity.tools.ToolManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
@@ -31,9 +29,6 @@ public class CliAppCtx {
 	    @Value("${mail.template}") String template //
     ) {
 	final Map<String, Object> variables = new HashMap<String, Object>();
-	final ToolManager toolManager = new ToolManager();
-	final ToolContext toolContext = toolManager.createContext();
-	variables.put("date", toolContext.get("date"));
 
 	return new NewsletterNotification(subject, template, resourcesDirectory, from, to, cc, variables, toolMailSender);
     }
