@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.io.Closeables;
 
-import etlmail.front.gui.NewsletterNotificationBuilder;
+import etlmail.front.gui.application.InvokeAndWait;
 import etlmail.front.gui.application.ShutdownEvent;
-import etlmail.front.gui.helper.InvokeAndWait;
+import etlmail.front.gui.sendmail.NewsletterNotificationBuilder;
 
 @Component
 public class SavePrefences implements ApplicationListener<ShutdownEvent> {

@@ -1,4 +1,4 @@
-package etlmail.front.gui;
+package etlmail.front.gui.mainframe;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-import etlmail.front.gui.application.ShutdownEvent;
-import etlmail.front.gui.application.WindowJanitor;
-import etlmail.front.gui.helper.InvokeAndWait;
+import etlmail.front.gui.application.*;
 import etlmail.front.gui.preferences.SwingServerConfiguration;
 
 @Component

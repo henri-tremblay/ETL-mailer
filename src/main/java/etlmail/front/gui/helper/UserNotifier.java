@@ -7,7 +7,7 @@ import javax.swing.JTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import etlmail.front.gui.MainFrame;
+import etlmail.front.gui.mainframe.MainFrame;
 
 @Component
 public class UserNotifier {

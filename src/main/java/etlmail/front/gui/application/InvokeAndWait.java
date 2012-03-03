@@ -1,4 +1,4 @@
-package etlmail.front.gui.helper;
+package etlmail.front.gui.application;
 
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.METHOD;

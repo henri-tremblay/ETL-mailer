@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import etlmail.front.gui.NewsletterNotificationBuilder;
 import etlmail.front.gui.helper.UserNotifier;
 
 public abstract class SendMailAction implements ActionListener, PropertyChangeListener {

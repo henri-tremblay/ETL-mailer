@@ -9,19 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import etlmail.front.gui.MainFrame;
-import etlmail.front.gui.helper.UserNotifier;
+import etlmail.front.gui.mainframe.MainFrame;
 
 @Component
 public class MailGui implements Runnable {
-    private @Autowired ExitAction exitAction;
-    private @Autowired UserNotifier notifier;
     private @Autowired MacListener macListener;
     private @Autowired MainFrame frame;
+    private @Autowired ApplicationEventHandler eventHandler;
 
     @Override
     public void run() {
-
 	if (isMac()) {
 	    macListener.enable();
 	} else {
@@ -35,16 +32,29 @@ public class MailGui implements Runnable {
 	final JMenuBar menuBar = new JMenuBar();
 	final JMenu menu = new JMenu("File");
 	menuBar.add(menu);
-	final JMenuItem aboutMenuItem = new JMenuItem("about");
+	final JMenuItem aboutMenuItem = new JMenuItem("About");
 	aboutMenuItem.addActionListener(new ActionListener() {
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-		notifier.showAbout();
+		eventHandler.showAbout();
 	    }
 	});
-	final JMenuItem exitMenuItem = new JMenuItem("exit");
-	exitMenuItem.addActionListener(exitAction);
+	final JMenuItem preferencesMenuItem = new JMenuItem("Preferences");
+	preferencesMenuItem.addActionListener(new ActionListener() {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		eventHandler.showPreferences();
+	    }
+	});
+	final JMenuItem exitMenuItem = new JMenuItem("Exit");
+	exitMenuItem.addActionListener(new ActionListener() {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		eventHandler.shutDown(e);
+	    }
+	});
 	menu.add(aboutMenuItem);
+	menu.add(preferencesMenuItem);
 	menu.add(exitMenuItem);
 	frame.setJMenuBar(menuBar);
     }

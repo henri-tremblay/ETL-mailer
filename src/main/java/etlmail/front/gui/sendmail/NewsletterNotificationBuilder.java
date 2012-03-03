@@ -1,4 +1,4 @@
-package etlmail.front.gui;
+package etlmail.front.gui.sendmail;
 
 import static etlmail.front.gui.helper.ModelUtils.setText;
 
@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 
 import etlmail.engine.NewsletterNotification;
 import etlmail.engine.ToolMailSender;
+import etlmail.front.gui.application.InvokeAndWait;
 import etlmail.front.gui.choosetemplate.FileDocument;
 import etlmail.front.gui.choosetemplate.FilenameListener;
 import etlmail.front.gui.helper.DocumentAdapter;
-import etlmail.front.gui.helper.InvokeAndWait;
 
 @Component
 public class NewsletterNotificationBuilder {

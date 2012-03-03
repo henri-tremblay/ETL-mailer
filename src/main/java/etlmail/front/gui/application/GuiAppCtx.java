@@ -5,7 +5,7 @@ import javax.swing.SwingWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 
-import etlmail.front.gui.MainFrame;
+import etlmail.front.gui.mainframe.MainFrame;
 import etlmail.front.gui.sendmail.ProgressDialog;
 import etlmail.front.gui.sendmail.SendMailAction;
 

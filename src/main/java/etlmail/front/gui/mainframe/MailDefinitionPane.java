@@ -1,4 +1,4 @@
-package etlmail.front.gui;
+package etlmail.front.gui.mainframe;
 
 import java.awt.Container;
 
@@ -12,9 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import etlmail.front.gui.application.InvokeAndWait;
 import etlmail.front.gui.choosetemplate.ChooseFileAction;
 import etlmail.front.gui.choosetemplate.FileDocumentChooser;
-import etlmail.front.gui.helper.InvokeAndWait;
+import etlmail.front.gui.sendmail.NewsletterNotificationBuilder;
 import etlmail.front.gui.sendmail.SendMailAction;
 
 @Component

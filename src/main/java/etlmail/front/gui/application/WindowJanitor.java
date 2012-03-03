@@ -21,5 +21,4 @@ public class WindowJanitor implements ApplicationListener<ShutdownEvent> {
     public void register(Window window) {
 	windows.put(window, window);
     }
-
 }

@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import etlmail.front.gui.application.InvokeAndWait;
 import etlmail.front.gui.application.WindowJanitor;
-import etlmail.front.gui.helper.InvokeAndWait;
 
 @Component
 @Scope(SCOPE_PROTOTYPE)

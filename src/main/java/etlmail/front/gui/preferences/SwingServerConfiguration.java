@@ -8,8 +8,8 @@ import javax.swing.text.Document;
 import org.springframework.stereotype.Component;
 
 import etlmail.context.ServerConfiguration;
+import etlmail.front.gui.application.InvokeAndWait;
 import etlmail.front.gui.helper.DocumentAdapter;
-import etlmail.front.gui.helper.InvokeAndWait;
 
 @Component
 public class SwingServerConfiguration implements ServerConfiguration {

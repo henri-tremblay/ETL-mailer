@@ -1,4 +1,4 @@
-package etlmail.front.gui.helper;
+package etlmail.front.gui.application;
 
 import javax.swing.SwingUtilities;
 
@@ -7,6 +7,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import etlmail.front.gui.helper.ExceptionWrapper;
 
 @Aspect
 public class SwingPolicies {
