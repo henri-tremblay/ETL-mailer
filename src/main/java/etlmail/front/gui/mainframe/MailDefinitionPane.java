@@ -25,12 +25,13 @@ public class MailDefinitionPane {
     private @Autowired NewsletterNotificationBuilder notificationBuilder;
     private @Autowired SendMailAction sendMailAction;
 
-    private final JButton fileButton = new JButton("\u2026");
-    private final JButton sendButton = new JButton("Send");
+    private final JButton fileButton;
+    private final JButton sendButton;
 
     @InvokeAndWait
     public MailDefinitionPane() {
-
+	fileButton = new JButton("\u2026");
+	sendButton = new JButton("Send");
     }
 
     public void addButtonActions(JFrame frame) {

@@ -22,7 +22,7 @@ public class ApplicationEventHandler {
      * Only call from EDT
      */
     public void showPreferences() {
-	preferencesWindowProvider.getObject().setVisible(true);
+	preferencesWindowProvider.getObject().show();
     }
 
     public void showAbout() {

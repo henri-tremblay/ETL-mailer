@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
@@ -24,11 +25,10 @@ public class MailGui implements Runnable {
 	} else {
 	    addMenuBar(frame);
 	}
-	frame.pack();
-	frame.setVisible(true);
+	frame.show();
     }
 
-    private void addMenuBar(final JFrame frame) {
+    private void addMenuBar(final MainFrame frame) {
 	final JMenuBar menuBar = new JMenuBar();
 	final JMenu menu = new JMenu("File");
 	menuBar.add(menu);
@@ -69,7 +69,18 @@ public class MailGui implements Runnable {
 	    System.setProperty("com.apple.mrj.application.apple.menu.about.name", "ETL Mail");
 	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
+
+	UIManager.setLookAndFeel(lookAndFeel());
 	final AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(GuiAppCtx.class);
 	SwingUtilities.invokeLater(ctx.getBean(MailGui.class));
+    }
+
+    private static String lookAndFeel() {
+	for (final UIManager.LookAndFeelInfo laf : UIManager.getInstalledLookAndFeels()) {
+	    if ("Nimbus".equals(laf.getName())) {
+		return laf.getClassName();
+	    }
+	}
+	return SubstanceBusinessLookAndFeel.class.getName();
     }
 }

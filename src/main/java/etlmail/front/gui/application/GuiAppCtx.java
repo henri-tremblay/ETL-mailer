@@ -21,7 +21,7 @@ public class GuiAppCtx {
 	return new SendMailAction() {
 	    @Override
 	    protected ProgressDialog makeProgressDialog(SwingWorker<?, ?> sendMailWorker) {
-		return new ProgressDialog(mainFrame, sendMailWorker);
+		return new ProgressDialog(mainFrame.top(), sendMailWorker);
 	    }
 	};
     }

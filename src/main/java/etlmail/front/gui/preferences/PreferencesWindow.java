@@ -18,23 +18,22 @@ import etlmail.front.gui.application.WindowJanitor;
 
 @Component
 @Scope(SCOPE_PROTOTYPE)
-@SuppressWarnings("serial")
-public class PreferencesWindow extends JFrame {
-    @Autowired SwingServerConfiguration serverConfiguration;
+public class PreferencesWindow {
+    private @Autowired SwingServerConfiguration serverConfiguration;
+    private final JFrame frame;
 
     @InvokeAndWait
     public PreferencesWindow() {
-
+	frame = new JFrame();
     }
 
     @PostConstruct
     @InvokeAndWait
     public void init() {
-	setTitle("Preferences");
-	makeLayout(getContentPane());
-	setResizable(false);
-	setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-	pack();
+	frame.setTitle("Preferences");
+	makeLayout(frame.getContentPane());
+	frame.setResizable(false);
+	frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     private void makeLayout(Container container) {
@@ -55,6 +54,11 @@ public class PreferencesWindow extends JFrame {
 
     @Autowired
     public void register(WindowJanitor janitor) {
-	janitor.register(this);
+	janitor.register(frame);
+    }
+
+    public void show() {
+	frame.pack();
+	frame.setVisible(true);
     }
 }

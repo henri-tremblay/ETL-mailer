@@ -27,6 +27,7 @@
 		<jsoup.version>1.6.1</jsoup.version>
 		<miglayout.version>4.2</miglayout.version>
 		<macify.version>1.4</macify.version>
+		<substance.version>7.1</substance.version>
 		<commons-logging.version>99-empty</commons-logging.version>
 	</properties>
 	<dependencies>
@@ -96,6 +97,23 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Swingy Stuff -->
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout-swing</artifactId>
+			<version>${miglayout.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.simplericity.macify</groupId>
+			<artifactId>macify</artifactId>
+			<version>${macify.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.insubstantial</groupId>
+			<artifactId>substance</artifactId>
+			<version>${substance.version}</version>
+		</dependency>
+
 		<!-- Miscellaneous -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
@@ -121,16 +139,6 @@
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
 			<version>${jsoup.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.miglayout</groupId>
-			<artifactId>miglayout-swing</artifactId>
-			<version>${miglayout.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.simplericity.macify</groupId>
-			<artifactId>macify</artifactId>
-			<version>${macify.version}</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
