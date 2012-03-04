@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import etlmail.engine.NewsletterNotification;
 import etlmail.front.gui.helper.UserNotifier;
 
 public abstract class SendMailAction implements ActionListener, PropertyChangeListener {
@@ -58,5 +59,19 @@ public abstract class SendMailAction implements ActionListener, PropertyChangeLi
 
     private boolean isDone(PropertyChangeEvent event) {
 	return "state".equals(event.getPropertyName()) && DONE.equals(event.getNewValue());
+    }
+}
+
+class SendMailWorker extends SwingWorker<Void, Void> {
+    private final NewsletterNotification notification;
+
+    SendMailWorker(NewsletterNotification notification) {
+	this.notification = notification;
+    }
+
+    @Override
+    protected Void doInBackground() {
+	notification.processNotification();
+	return null;
     }
 }

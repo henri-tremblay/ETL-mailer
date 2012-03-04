@@ -12,5 +12,4 @@ appender("CONSOLE", ConsoleAppender) {
 }
 
 logger "org.springframework", WARN
-logger "etlmail", DEBUG
 root INFO, ["CONSOLE"]
