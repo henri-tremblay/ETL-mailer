@@ -24,13 +24,9 @@ public class AboutWindow extends FrameHolder {
     }
 
     private void makeLayout(Container container) {
-	container.setLayout(new MigLayout("fill, flowy", "", "push[][]push"));
+	container.setLayout(new MigLayout("fill", "10[]20", "push[]push"));
 
-	final JLabel madame = imageProvider.getMadame();
-	if (madame != null) {
-	    container.add(madame, "dock west");
-	}
-	container.add(new JLabel("ETL mail v0.20"), "");
-	container.add(new JLabel("by FRO, NDN & FME"), "");
+	container.add(imageProvider.getMadame(), "dock west");
+	container.add(new JLabel("<html>ETL mail v0.20<br>by FRO, NDN & FME</html>"), "");
     }
 }

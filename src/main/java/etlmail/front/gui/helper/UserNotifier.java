@@ -3,7 +3,7 @@ package etlmail.front.gui.helper;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,17 +21,14 @@ public class UserNotifier {
     }
 
     public void showError(final Throwable cause) {
-	final JTextArea messageArea = messageArea(cause.getLocalizedMessage(), 30);
-	showMessageDialog(mainWindow.top(), messageArea, "Oops", ERROR_MESSAGE);
+	final JComponent messageArea = messageArea(cause.getLocalizedMessage());
+	showMessageDialog(mainWindow.top(), messageArea, "Somebody set us up the bomb", ERROR_MESSAGE);
     }
 
-    public static JTextArea messageArea(String message, int columns) {
-	final JTextArea messageArea = new JTextArea(message);
-	messageArea.setEnabled(false);
-	messageArea.setColumns(columns);
-	messageArea.setLineWrap(true);
-	messageArea.setWrapStyleWord(true);
-	messageArea.setSize(messageArea.getPreferredSize().width, 1);
-	return messageArea;
+    public static JComponent messageArea(String message) {
+	final JTextArea text = new JTextArea(message, 5, 30);
+	text.setLineWrap(true);
+	text.setWrapStyleWord(true);
+	return new JScrollPane(text);
     }
 }
