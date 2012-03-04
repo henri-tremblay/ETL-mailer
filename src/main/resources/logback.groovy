@@ -7,10 +7,10 @@ statusListener(OnConsoleStatusListener)
 
 appender("CONSOLE", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
-	pattern = "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c - %m%n"
+	pattern = "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c{15} - %m%n"
     }
 }
 
-logger "org.hibernate", WARN
 logger "org.springframework", WARN
+logger "etlmail", DEBUG
 root INFO, ["CONSOLE"]

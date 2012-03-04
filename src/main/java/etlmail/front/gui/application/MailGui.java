@@ -6,14 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import etlmail.front.gui.helper.FrameHolder;
 import etlmail.front.gui.mainframe.MainFrame;
 
 @Component
 public class MailGui implements Runnable {
+    private static final Logger log = LoggerFactory.getLogger(MailGui.class);
+
     private @Autowired MacListener macListener;
     private @Autowired MainFrame frame;
     private @Autowired ApplicationEventHandler eventHandler;
@@ -26,9 +31,10 @@ public class MailGui implements Runnable {
 	    addMenuBar(frame);
 	}
 	frame.show();
+	log.debug("Up and running");
     }
 
-    private void addMenuBar(final MainFrame frame) {
+    private void addMenuBar(final FrameHolder frame) {
 	final JMenuBar menuBar = new JMenuBar();
 	final JMenu menu = new JMenu("File");
 	menuBar.add(menu);
@@ -64,6 +70,7 @@ public class MailGui implements Runnable {
     }
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+	log.debug("Starting");
 	if (isMac()) {
 	    System.setProperty("apple.laf.useScreenMenuBar", "true");
 	    System.setProperty("com.apple.mrj.application.apple.menu.about.name", "ETL Mail");

@@ -23,7 +23,7 @@ public class SwingPolicies {
 	} else {
 	    try {
 		final AtomicReference<Object> result = new AtomicReference<Object>();
-		log.info("Waiting for EDT");
+		log.debug("Waiting for EDT");
 		SwingUtilities.invokeAndWait(new Runnable() {
 		    @Override
 		    public void run() {

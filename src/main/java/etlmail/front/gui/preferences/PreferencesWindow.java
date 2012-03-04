@@ -14,18 +14,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import etlmail.front.gui.application.InvokeAndWait;
-import etlmail.front.gui.application.WindowJanitor;
+import etlmail.front.gui.helper.FrameHolder;
 
 @Component
 @Scope(SCOPE_PROTOTYPE)
-public class PreferencesWindow {
+public class PreferencesWindow extends FrameHolder {
     private @Autowired SwingServerConfiguration serverConfiguration;
-    private final JFrame frame;
-
-    @InvokeAndWait
-    public PreferencesWindow() {
-	frame = new JFrame();
-    }
 
     @PostConstruct
     @InvokeAndWait
@@ -50,15 +44,5 @@ public class PreferencesWindow {
 
 	container.add(new JLabel("User"));
 	container.add(new JTextField(serverConfiguration.getUserDocument(), null, 20), "wrap");
-    }
-
-    @Autowired
-    public void register(WindowJanitor janitor) {
-	janitor.register(frame);
-    }
-
-    public void show() {
-	frame.pack();
-	frame.setVisible(true);
     }
 }

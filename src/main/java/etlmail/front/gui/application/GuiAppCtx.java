@@ -5,7 +5,7 @@ import javax.swing.SwingWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 
-import etlmail.front.gui.mainframe.MainFrame;
+import etlmail.front.gui.helper.FrameHolder;
 import etlmail.front.gui.sendmail.ProgressDialog;
 import etlmail.front.gui.sendmail.SendMailAction;
 
@@ -17,7 +17,7 @@ etlmail.front.gui.ComponentScanMarker.class, //
 public class GuiAppCtx {
     @Bean
     @Autowired
-    public SendMailAction sendMailAction(final MainFrame mainFrame) {
+    public SendMailAction sendMailAction(final FrameHolder mainFrame) {
 	return new SendMailAction() {
 	    @Override
 	    protected ProgressDialog makeProgressDialog(SwingWorker<?, ?> sendMailWorker) {

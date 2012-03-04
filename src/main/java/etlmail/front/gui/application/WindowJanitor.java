@@ -1,24 +1,30 @@
 package etlmail.front.gui.application;
 
+import static java.util.Collections.synchronizedMap;
+
 import java.awt.Window;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import org.apache.commons.lang.Validate;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WindowJanitor implements ApplicationListener<ShutdownEvent> {
-    private final Map<Window, Window> windows = new WeakHashMap<Window, Window>();
+    private final Map<Window, WindowJanitor> windows = synchronizedMap(new WeakHashMap<Window, WindowJanitor>());
 
     @Override
     public void onApplicationEvent(ShutdownEvent event) {
-	for (final Window window : windows.keySet()) {
-	    window.dispose();
+	synchronized (windows) {
+	    for (final Window window : windows.keySet()) {
+		window.dispose();
+	    }
 	}
     }
 
     public void register(Window window) {
-	windows.put(window, window);
+	Validate.notNull(window);
+	windows.put(window, this);
     }
 }
