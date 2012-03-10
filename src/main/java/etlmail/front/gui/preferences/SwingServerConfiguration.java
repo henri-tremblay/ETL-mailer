@@ -19,10 +19,10 @@ public class SwingServerConfiguration implements ServerConfiguration {
 	private final Document usernameDocument = new DefaultStyledDocument();
 	private final Document passwordDocument = new DefaultStyledDocument();
 
-	private volatile String host;
-	private volatile Integer port;
-	private volatile String username;
-	private volatile String password;
+	private volatile String host = "";
+	private volatile Integer port = 25;
+	private volatile String username = "";
+	private volatile String password = "";
 
 	@InvokeAndWait
 	public SwingServerConfiguration() {

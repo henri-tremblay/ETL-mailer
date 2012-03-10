@@ -26,10 +26,10 @@ public class NewsletterNotificationBuilder {
 	private final Document fromDocument = new DefaultStyledDocument();
 	private final Document toDocument = new DefaultStyledDocument();
 
-	private volatile String subject;
-	private volatile File template;
-	private volatile String from;
-	private volatile String to;
+	private volatile String subject = "";
+	private volatile File template = new File("");
+	private volatile String from = "";
+	private volatile String to = "";
 
 	private final Map<String, Object> variables = new HashMap<String, Object>();
 
