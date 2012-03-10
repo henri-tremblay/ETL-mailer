@@ -9,28 +9,28 @@ import etlmail.front.gui.application.InvokeAndWait;
 import etlmail.front.gui.application.WindowJanitor;
 
 public class FrameHolder {
-    protected final JFrame frame;
+	protected final JFrame frame;
 
-    @InvokeAndWait
-    public FrameHolder() {
-	frame = new JFrame();
-    }
+	@InvokeAndWait
+	public FrameHolder() {
+		frame = new JFrame();
+	}
 
-    @Autowired
-    public void register(WindowJanitor janitor) {
-	janitor.register(frame);
-    }
+	@Autowired
+	public void register(WindowJanitor janitor) {
+		janitor.register(frame);
+	}
 
-    public void show() {
-	frame.pack();
-	frame.setVisible(true);
-    }
+	public void show() {
+		frame.pack();
+		frame.setVisible(true);
+	}
 
-    public void setJMenuBar(JMenuBar menuBar) {
-	frame.setJMenuBar(menuBar);
-    }
+	public void setJMenuBar(JMenuBar menuBar) {
+		frame.setJMenuBar(menuBar);
+	}
 
-    public JFrame top() {
-	return frame;
-    }
+	public JFrame top() {
+		return frame;
+	}
 }

@@ -21,118 +21,121 @@ import etlmail.front.gui.helper.DocumentAdapter;
 
 @Component
 public class NewsletterNotificationBuilder {
-    private final Document subjectDocument = new DefaultStyledDocument();
-    private final FileDocument templateDocument = new FileDocument();
-    private final Document fromDocument = new DefaultStyledDocument();
-    private final Document toDocument = new DefaultStyledDocument();
+	private final Document subjectDocument = new DefaultStyledDocument();
+	private final FileDocument templateDocument = new FileDocument();
+	private final Document fromDocument = new DefaultStyledDocument();
+	private final Document toDocument = new DefaultStyledDocument();
 
-    private volatile String subject;
-    private volatile File template;
-    private volatile String from;
-    private volatile String to;
+	private volatile String subject;
+	private volatile File template;
+	private volatile String from;
+	private volatile String to;
 
-    private final Map<String, Object> variables = new HashMap<String, Object>();
+	private final Map<String, Object> variables = new HashMap<String, Object>();
 
-    private @Autowired ToolMailSender toolMailSender;
+	private @Autowired
+	ToolMailSender toolMailSender;
 
-    @InvokeAndWait
-    public NewsletterNotificationBuilder() {
-	subjectDocument.addDocumentListener(new DocumentAdapter() {
-	    @Override
-	    protected void update(String newText) {
-		subject = newText;
-	    }
-	});
-	templateDocument.addFilenameListener(new FilenameListener() {
-	    @Override
-	    public void update(File file) {
-		template = file;
-	    }
-	});
-	fromDocument.addDocumentListener(new DocumentAdapter() {
-	    @Override
-	    protected void update(String newText) {
-		from = newText;
-	    }
-	});
-	toDocument.addDocumentListener(new DocumentAdapter() {
-	    @Override
-	    protected void update(String newText) {
-		to = newText;
-	    }
-	});
-    }
+	@InvokeAndWait
+	public NewsletterNotificationBuilder() {
+		subjectDocument.addDocumentListener(new DocumentAdapter() {
+			@Override
+			protected void update(String newText) {
+				subject = newText;
+			}
+		});
+		templateDocument.addFilenameListener(new FilenameListener() {
+			@Override
+			public void update(File file) {
+				template = file;
+			}
+		});
+		fromDocument.addDocumentListener(new DocumentAdapter() {
+			@Override
+			protected void update(String newText) {
+				from = newText;
+			}
+		});
+		toDocument.addDocumentListener(new DocumentAdapter() {
+			@Override
+			protected void update(String newText) {
+				to = newText;
+			}
+		});
+	}
 
-    public NewsletterNotification build() {
-	final File templateFile = template().getAbsoluteFile();
-	return new NewsletterNotification(subject(), templateFile.getName(), templateFile.getParent(), from(), to(), cc(), variables, toolMailSender);
-    }
+	public NewsletterNotification build() {
+		final File templateFile = template().getAbsoluteFile();
+		return new NewsletterNotification(subject(), templateFile.getName(),
+				templateFile.getParent(), from(), to(), cc(), variables,
+				toolMailSender);
+	}
 
-    public FileDocument getTemplate() {
-	return templateDocument;
-    }
+	public FileDocument getTemplate() {
+		return templateDocument;
+	}
 
-    /**
-     * Only call from the EDT
-     */
-    public NewsletterNotificationBuilder template(File template) {
-	templateDocument.setFile(template);
-	return this;
-    }
+	/**
+	 * Only call from the EDT
+	 */
+	public NewsletterNotificationBuilder template(File template) {
+		templateDocument.setFile(template);
+		return this;
+	}
 
-    public File template() {
-	return template;
-    }
+	public File template() {
+		return template;
+	}
 
-    public Document getSubject() {
-	return subjectDocument;
-    }
+	public Document getSubject() {
+		return subjectDocument;
+	}
 
-    /**
-     * Only call from the EDT
-     */
-    public NewsletterNotificationBuilder subject(String subject) {
-	setText(subjectDocument, subject);
-	return this;
-    }
+	/**
+	 * Only call from the EDT
+	 */
+	public NewsletterNotificationBuilder subject(String subject) {
+		setText(subjectDocument, subject);
+		return this;
+	}
 
-    public String subject() {
-	return subject;
-    }
+	public String subject() {
+		return subject;
+	}
 
-    public Document getFrom() {
-	return fromDocument;
-    }
+	public Document getFrom() {
+		return fromDocument;
+	}
 
-    /**
-     * Only call from the EDT
-     */
-    public NewsletterNotificationBuilder from(String from) {
-	setText(fromDocument, from);
-	return this;
-    }
+	/**
+	 * Only call from the EDT
+	 */
+	public NewsletterNotificationBuilder from(String from) {
+		setText(fromDocument, from);
+		return this;
+	}
 
-    public String from() {
-	return from;
-    }
+	public String from() {
+		return from;
+	}
 
-    public Document getTo() {
-	return toDocument;
-    }
+	public Document getTo() {
+		return toDocument;
+	}
 
-    /**
-     * Only call from the EDT
-     */
-    public NewsletterNotificationBuilder to(String to) {
-	setText(toDocument, to);
-	return this;
-    }
+	/**
+	 * Only call from the EDT
+	 */
+	public NewsletterNotificationBuilder to(String to) {
+		setText(toDocument, to);
+		return this;
+	}
 
-    public String to() {
-	return to;
-    }
+	public String to() {
+		return to;
+	}
 
-    public String cc() {
-	return "";
-    }
+	public String cc() {
+		return "";
+	}
 }

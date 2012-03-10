@@ -27,115 +27,123 @@ import etlmail.engine.css.CssInliner;
 import etlmail.front.cli.PropertyServerConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ToolMailSenderTest.Mockery.class, ToolMailSenderTest.EngineLessToolMailSender.class, PropertyServerConfiguration.class })
+@ContextConfiguration(classes = { ToolMailSenderTest.Mockery.class,
+		ToolMailSenderTest.EngineLessToolMailSender.class,
+		PropertyServerConfiguration.class })
 @DirtiesContext
 public class ToolMailSenderTest {
 
-    static class EngineLessToolMailSender extends ToolMailSender {
-	@Override
-	protected VelocityEngine velocityEngine(String resourcesDirectory) {
-	    return null;
-	}
-    }
-
-    @Configuration
-    @PropertySource({ "classpath:mailTool.properties" })
-    static class Mockery extends EasyMockSupport {
-	@Bean
-	public JavaMailSender javaMailSender() {
-	    return createMock(JavaMailSender.class);
+	static class EngineLessToolMailSender extends ToolMailSender {
+		@Override
+		protected VelocityEngine velocityEngine(String resourcesDirectory) {
+			return null;
+		}
 	}
 
-	@Bean
-	public CssInliner cssInliner() {
-	    return createMock(CssInliner.class);
+	@Configuration
+	@PropertySource({ "classpath:mailTool.properties" })
+	static class Mockery extends EasyMockSupport {
+		@Bean
+		public JavaMailSender javaMailSender() {
+			return createMock(JavaMailSender.class);
+		}
+
+		@Bean
+		public CssInliner cssInliner() {
+			return createMock(CssInliner.class);
+		}
+
+		@Bean
+		public ToolContext toolContext() {
+			return createMock(ToolContext.class);
+		}
+
+		@Bean
+		public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
+			return new PropertySourcesPlaceholderConfigurer();
+		}
 	}
 
-	@Bean
-	public ToolContext toolContext() {
-	    return createMock(ToolContext.class);
+	@Autowired
+	JavaMailSender javaMailSenderMock;
+
+	@Autowired
+	ToolMailSender toolMailSender;
+
+	@Autowired
+	Mockery mockery;
+
+	@Test
+	public void sendMail_DoitAppelerJavaMailSender() {
+		// Setup
+		javaMailSenderMock.send(anyObject(MimeMessagePreparator.class));
+		expectLastCall();
+		mockery.replayAll();
+
+		// Test
+		toolMailSender.sendMail(null);
+
+		// Assertions
+		mockery.verifyAll();
 	}
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
-	    return new PropertySourcesPlaceholderConfigurer();
+	@Test
+	public void toStringArray_AvecUneListeDeDeuxElements_DoitRenvoyerUnTableauAvecCesElements() {
+		// setup
+		final List<String> strings = Arrays.asList("string1", "string2");
+
+		// test
+		final String[] stringArray = toolMailSender.toStringArray(strings);
+
+		// assertions
+		Assert.assertEquals(2, stringArray.length);
+		Assert.assertEquals("string1", stringArray[0]);
+		Assert.assertEquals("string2", stringArray[1]);
 	}
-    }
 
-    @Autowired JavaMailSender javaMailSenderMock;
+	@Test
+	public void toStringArrayWithNullList() {
+		// setup
+		final List<String> strings = null;
 
-    @Autowired ToolMailSender toolMailSender;
+		// test
+		final String[] stringArray = toolMailSender.toStringArray(strings);
 
-    @Autowired Mockery mockery;
+		// assertions
+		assertThat(stringArray.length).isZero();
+	}
 
-    @Test
-    public void sendMail_DoitAppelerJavaMailSender() {
-	// Setup
-	javaMailSenderMock.send(anyObject(MimeMessagePreparator.class));
-	expectLastCall();
-	mockery.replayAll();
+	@Test
+	public void getAddressesFromString() {
 
-	// Test
-	toolMailSender.sendMail(null);
+		// Setup
+		final String addresses = "aaa@aaa.com, BBB@bbb.com,ccc@ccc.com,";
 
-	// Assertions
-	mockery.verifyAll();
-    }
+		// Test
+		final List<String> addressList = toolMailSender
+				.getAddressesFromString(addresses);
 
-    @Test
-    public void toStringArray_AvecUneListeDeDeuxElements_DoitRenvoyerUnTableauAvecCesElements() {
-	// setup
-	final List<String> strings = Arrays.asList("string1", "string2");
+		// Assertions
+		Assert.assertEquals(3, addressList.size());
+		Assert.assertTrue(addressList.contains("aaa@aaa.com"));
+		Assert.assertTrue(addressList.contains("bbb@bbb.com"));
+		Assert.assertTrue(addressList.contains("ccc@ccc.com"));
 
-	// test
-	final String[] stringArray = toolMailSender.toStringArray(strings);
+		final String addressesEmpty = "";
+		final List<String> addressListEmpty = toolMailSender
+				.getAddressesFromString(addressesEmpty);
+		Assert.assertEquals(0, addressListEmpty.size());
+	}
 
-	// assertions
-	Assert.assertEquals(2, stringArray.length);
-	Assert.assertEquals("string1", stringArray[0]);
-	Assert.assertEquals("string2", stringArray[1]);
-    }
+	@Test
+	public void convertImagesToCid_AvecDeuxFoisLaMemeImage_NeDoitPasLaRepeter() {
+		final Document document = new Document("");
+		document.appendElement("img").attr("src", "gnu.gif");
+		document.appendElement("img").attr("src", "gnu.gif");
 
-    @Test
-    public void toStringArrayWithNullList() {
-	// setup
-	final List<String> strings = null;
+		final Collection<String> imageNames = toolMailSender
+				.convertImagesToCid(document);
 
-	// test
-	final String[] stringArray = toolMailSender.toStringArray(strings);
-
-	// assertions
-	assertThat(stringArray.length).isZero();
-    }
-
-    @Test
-    public void getAddressesFromString() {
-
-	// Setup
-	final String addresses = "aaa@aaa.com, BBB@bbb.com,ccc@ccc.com,";
-
-	// Test
-	final List<String> addressList = toolMailSender.getAddressesFromString(addresses);
-
-	// Assertions
-	Assert.assertEquals(3, addressList.size());
-	Assert.assertTrue(addressList.contains("aaa@aaa.com"));
-	Assert.assertTrue(addressList.contains("bbb@bbb.com"));
-	Assert.assertTrue(addressList.contains("ccc@ccc.com"));
-
-	final String addressesEmpty = "";
-	final List<String> addressListEmpty = toolMailSender.getAddressesFromString(addressesEmpty);
-	Assert.assertEquals(0, addressListEmpty.size());
-    }
-
-    @Test
-    public void convertImagesToCid_AvecDeuxFoisLaMemeImage_NeDoitPasLaRepeter() {
-	final Document document = new Document("");
-	document.appendElement("img").attr("src", "gnu.gif");
-	document.appendElement("img").attr("src", "gnu.gif");
-
-	final Collection<String> imageNames = toolMailSender.convertImagesToCid(document);
-
-	assertThat(imageNames).doesNotHaveDuplicates();
-    }
+		assertThat(imageNames).doesNotHaveDuplicates();
+	}
 }

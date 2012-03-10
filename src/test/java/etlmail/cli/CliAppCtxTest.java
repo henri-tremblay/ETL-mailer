@@ -7,8 +7,8 @@ import etlmail.front.cli.CliAppCtx;
 
 public class CliAppCtxTest {
 
-    @Test
-    public void instantiate() {
-	new AnnotationConfigApplicationContext(CliAppCtx.class).close();
-    }
+	@Test
+	public void instantiate() {
+		new AnnotationConfigApplicationContext(CliAppCtx.class).close();
+	}
 }

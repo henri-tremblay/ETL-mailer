@@ -10,35 +10,38 @@ import etlmail.engine.NewsletterNotification;
 
 @Component
 public class NewsletterNotifier {
-    private static final Logger log = LoggerFactory.getLogger(NewsletterNotifier.class);
+	private static final Logger log = LoggerFactory
+			.getLogger(NewsletterNotifier.class);
 
-    private @Autowired NewsletterNotification newsletterNotification;
+	private @Autowired
+	NewsletterNotification newsletterNotification;
 
-    public static void main(String[] args) {
-	try {
-	    log.info("Initializing mail tool...");
-	    final AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(CliAppCtx.class);
-	    ctx.registerShutdownHook();
-	    ctx.getBean(NewsletterNotifier.class).run();
-	} catch (final Exception e) {
-	    log.error("Error, could not send mail", e);
-	    exitOnError();
+	public static void main(String[] args) {
+		try {
+			log.info("Initializing mail tool...");
+			final AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(
+					CliAppCtx.class);
+			ctx.registerShutdownHook();
+			ctx.getBean(NewsletterNotifier.class).run();
+		} catch (final Exception e) {
+			log.error("Error, could not send mail", e);
+			exitOnError();
+		}
 	}
-    }
 
-    public void run() {
-	log.info("Sending mail...");
-	newsletterNotification.processNotification();
-	log.info("Mail successfully sent");
-	exitOnSuccess();
-    }
+	public void run() {
+		log.info("Sending mail...");
+		newsletterNotification.processNotification();
+		log.info("Mail successfully sent");
+		exitOnSuccess();
+	}
 
-    private static void exitOnError() {
-	System.exit(1);
-    }
+	private static void exitOnError() {
+		System.exit(1);
+	}
 
-    private static void exitOnSuccess() {
-	System.exit(0);
-    }
+	private static void exitOnSuccess() {
+		System.exit(0);
+	}
 
 }

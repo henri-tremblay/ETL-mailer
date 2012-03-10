@@ -15,31 +15,35 @@ import etlmail.engine.ToolMailSender;
 @Configuration
 @ComponentScan(basePackageClasses = { //
 etlmail.context.ComponentScanMarker.class, //
-	etlmail.engine.ComponentScanMarker.class //
+		etlmail.engine.ComponentScanMarker.class //
 })
 public class MailToolAppCtx {
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer configurer() {
-	return new PropertySourcesPlaceholderConfigurer();
-    }
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer configurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 
-    @Bean
-    @Scope(SCOPE_PROTOTYPE)
-    public ToolMailSender toolMailSender() {
-	return new ToolMailSender() {
-	    @Override
-	    protected VelocityEngine velocityEngine(String resourcesDirectory) {
-		final VelocityEngine velocityEngine = new VelocityEngine();
-		velocityEngine.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourcesDirectory);
-		velocityEngine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, CommonsLogLogChute.class.getName());
-		return velocityEngine;
-	    }
-	};
-    }
+	@Bean
+	@Scope(SCOPE_PROTOTYPE)
+	public ToolMailSender toolMailSender() {
+		return new ToolMailSender() {
+			@Override
+			protected VelocityEngine velocityEngine(String resourcesDirectory) {
+				final VelocityEngine velocityEngine = new VelocityEngine();
+				velocityEngine.setProperty(
+						RuntimeConstants.FILE_RESOURCE_LOADER_PATH,
+						resourcesDirectory);
+				velocityEngine.setProperty(
+						RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+						CommonsLogLogChute.class.getName());
+				return velocityEngine;
+			}
+		};
+	}
 
-    @Bean
-    public ToolContext toolContext() {
-	final ToolManager toolManager = new ToolManager();
-	return toolManager.createContext();
-    }
+	@Bean
+	public ToolContext toolContext() {
+		final ToolManager toolManager = new ToolManager();
+		return toolManager.createContext();
+	}
 }
