@@ -12,17 +12,18 @@ import etlmail.front.gui.sendmail.SendMailAction;
 @Configuration
 @ComponentScan(basePackageClasses = { //
 etlmail.front.gui.ComponentScanMarker.class, //
-	etlmail.context.ComponentScanMarker.class //
+		etlmail.context.ComponentScanMarker.class //
 })
 public class GuiAppCtx {
-    @Bean
-    @Autowired
-    public SendMailAction sendMailAction(final FrameHolder mainFrame) {
-	return new SendMailAction() {
-	    @Override
-	    protected ProgressDialog makeProgressDialog(SwingWorker<?, ?> sendMailWorker) {
-		return new ProgressDialog(mainFrame.top(), sendMailWorker);
-	    }
-	};
-    }
+	@Bean
+	@Autowired
+	public SendMailAction sendMailAction(final FrameHolder mainFrame) {
+		return new SendMailAction() {
+			@Override
+			protected ProgressDialog makeProgressDialog(
+					SwingWorker<?, ?> sendMailWorker) {
+				return new ProgressDialog(mainFrame.top(), sendMailWorker);
+			}
+		};
+	}
 }

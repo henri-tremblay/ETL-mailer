@@ -10,22 +10,25 @@ import etlmail.front.gui.preferences.PreferencesWindow;
 
 @Component
 public class ApplicationEventHandler {
-    private @Autowired ApplicationEventPublisher eventPublisher;
-    private @Autowired UserNotifier notifier;
-    private @Autowired ObjectFactory<PreferencesWindow> preferencesWindowProvider;
+	private @Autowired
+	ApplicationEventPublisher eventPublisher;
+	private @Autowired
+	UserNotifier notifier;
+	private @Autowired
+	ObjectFactory<PreferencesWindow> preferencesWindowProvider;
 
-    public void shutDown(Object cause) {
-	eventPublisher.publishEvent(new ShutdownEvent(cause));
-    }
+	public void shutDown(Object cause) {
+		eventPublisher.publishEvent(new ShutdownEvent(cause));
+	}
 
-    /**
-     * Only call from EDT
-     */
-    public void showPreferences() {
-	preferencesWindowProvider.getObject().show();
-    }
+	/**
+	 * Only call from EDT
+	 */
+	public void showPreferences() {
+		preferencesWindowProvider.getObject().show();
+	}
 
-    public void showAbout() {
-	notifier.showAbout();
-    }
+	public void showAbout() {
+		notifier.showAbout();
+	}
 }

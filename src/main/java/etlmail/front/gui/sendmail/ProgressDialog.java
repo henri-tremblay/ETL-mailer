@@ -14,30 +14,30 @@ import etlmail.front.gui.application.WindowJanitor;
 
 @SuppressWarnings("serial")
 public class ProgressDialog extends JDialog {
-    public ProgressDialog(Frame parent, final SwingWorker<?, ?> worker) {
-	super(parent, "Sending mail", true);
-	setLayout(new MigLayout());
-	setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-	add(progressBar());
-	pack();
-	addComponentListener(new ComponentAdapter() {
-	    @Override
-	    public void componentShown(ComponentEvent e) {
-		worker.execute();
-	    }
-	});
-    }
+	public ProgressDialog(Frame parent, final SwingWorker<?, ?> worker) {
+		super(parent, "Sending mail", true);
+		setLayout(new MigLayout());
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		add(progressBar());
+		pack();
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				worker.execute();
+			}
+		});
+	}
 
-    private JProgressBar progressBar() {
-	final JProgressBar progressBar = new JProgressBar();
-	progressBar.setString("Sending");
-	progressBar.setIndeterminate(true);
-	progressBar.setStringPainted(true);
-	return progressBar;
-    }
+	private JProgressBar progressBar() {
+		final JProgressBar progressBar = new JProgressBar();
+		progressBar.setString("Sending");
+		progressBar.setIndeterminate(true);
+		progressBar.setStringPainted(true);
+		return progressBar;
+	}
 
-    @Autowired
-    public void register(WindowJanitor janitor) {
-	janitor.register(this);
-    }
+	@Autowired
+	public void register(WindowJanitor janitor) {
+		janitor.register(this);
+	}
 }
