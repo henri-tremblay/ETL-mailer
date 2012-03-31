@@ -19,34 +19,30 @@ import etlmail.front.gui.helper.FrameHolder;
 @Component
 @Scope(SCOPE_PROTOTYPE)
 public class PreferencesWindow extends FrameHolder {
-	private @Autowired
-	SwingServerConfiguration serverConfiguration;
+    private @Autowired SwingServerConfiguration serverConfiguration;
 
-	@PostConstruct
-	@InvokeAndWait
-	public void init() {
-		frame.setTitle("Preferences");
-		makeLayout(frame.getContentPane());
-		frame.setResizable(false);
-		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-	}
+    @PostConstruct
+    @InvokeAndWait
+    public void init() {
+	frame.setTitle("Preferences");
+	makeLayout(frame.getContentPane());
+	frame.setResizable(false);
+	frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }
 
-	private void makeLayout(Container container) {
-		container.setLayout(new MigLayout(//
-				"fill", //
-				"[trailing][leading,grow,fill]", //
-				""));
+    private void makeLayout(Container container) {
+	container.setLayout(new MigLayout(//
+		"fill", //
+		"[trailing][leading,grow,fill]", //
+		""));
 
-		container.add(new JLabel("Host"));
-		container.add(new JTextField(serverConfiguration.getHostDocument(),
-				null, 20), "wrap");
+	container.add(new JLabel("Host"));
+	container.add(new JTextField(serverConfiguration.getHostDocument(), null, 20), "wrap");
 
-		container.add(new JLabel("Port"));
-		container.add(new JTextField(serverConfiguration.getPortDocument(),
-				null, 20), "wrap");
+	container.add(new JLabel("Port"));
+	container.add(new JTextField(serverConfiguration.getPortDocument(), null, 20), "wrap");
 
-		container.add(new JLabel("User"));
-		container.add(new JTextField(serverConfiguration.getUserDocument(),
-				null, 20), "wrap");
-	}
+	container.add(new JLabel("User"));
+	container.add(new JTextField(serverConfiguration.getUserDocument(), null, 20), "wrap");
+    }
 }

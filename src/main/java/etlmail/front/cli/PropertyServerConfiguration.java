@@ -7,32 +7,28 @@ import etlmail.context.ServerConfiguration;
 
 @Component
 public class PropertyServerConfiguration implements ServerConfiguration {
-	@Value("${mail.sender.host}")
-	private String host;
-	@Value("${mail.sender.port:25}")
-	private int port;
-	@Value("${mail.sender.username:}")
-	private String username;
-	@Value("${mail.sender.password:}")
-	private String password;
+    @Value("${mail.sender.host}") private String host;
+    @Value("${mail.sender.port:25}") private int port;
+    @Value("${mail.sender.username:}") private String username;
+    @Value("${mail.sender.password:}") private String password;
 
-	@Override
-	public String getHost() {
-		return host;
-	}
+    @Override
+    public String getHost() {
+	return host;
+    }
 
-	@Override
-	public int getPort() {
-		return port;
-	}
+    @Override
+    public int getPort() {
+	return port;
+    }
 
-	@Override
-	public String getUsername() {
-		return username;
-	}
+    @Override
+    public String getUsername() {
+	return username;
+    }
 
-	@Override
-	public String getPassword() {
-		return password;
-	}
+    @Override
+    public String getPassword() {
+	return password;
+    }
 }

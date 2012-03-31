@@ -15,69 +15,68 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import etlmail.engine.NewsletterNotification;
+import etlmail.engine.ToolMailSender;
 import etlmail.front.gui.helper.UserNotifier;
 
-public abstract class SendMailAction implements ActionListener,
-		PropertyChangeListener {
-	private static final Logger log = LoggerFactory
-			.getLogger(SendMailAction.class);
+public abstract class SendMailAction implements ActionListener, PropertyChangeListener {
+    private static final Logger log = LoggerFactory.getLogger(SendMailAction.class);
 
-	private @Autowired
-	UserNotifier notifier;
+    private @Autowired UserNotifier notifier;
 
-	private @Autowired
-	NewsletterNotificationBuilder notificationBuilder;
-	private ProgressDialog progress;
-	private SendMailWorker sendMailWorker;
+    private @Autowired ToolMailSender toolMailSender;
 
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		sendMailWorker = new SendMailWorker(notificationBuilder.build());
-		sendMailWorker.addPropertyChangeListener(this);
-		progress = makeProgressDialog(sendMailWorker);
-		progress.setVisible(true);
+    private @Autowired NewsletterNotificationBuilder notificationBuilder;
+    private ProgressDialog progress;
+    private SendMailWorker sendMailWorker;
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+	sendMailWorker = new SendMailWorker(notificationBuilder.build(), toolMailSender);
+	sendMailWorker.addPropertyChangeListener(this);
+	progress = makeProgressDialog(sendMailWorker);
+	progress.setVisible(true);
+    }
+
+    /**
+     * Only call from EDT
+     */
+    protected abstract ProgressDialog makeProgressDialog(SwingWorker<?, ?> sendMailWorker);
+
+    @Override
+    public void propertyChange(PropertyChangeEvent event) {
+	if (isDone(event)) {
+	    progress.setVisible(false);
+	    progress.dispose();
+	    progress = null;
+	    try {
+		sendMailWorker.get();
+	    } catch (final InterruptedException e) {
+		throw new IllegalStateException("Cannot happen", e);
+	    } catch (final ExecutionException e) {
+		final Throwable cause = e.getCause();
+		log.error("Cannot send mail", cause);
+		notifier.showError(cause);
+	    }
 	}
+    }
 
-	/**
-	 * Only call from EDT
-	 */
-	protected abstract ProgressDialog makeProgressDialog(
-			SwingWorker<?, ?> sendMailWorker);
-
-	@Override
-	public void propertyChange(PropertyChangeEvent event) {
-		if (isDone(event)) {
-			progress.setVisible(false);
-			progress.dispose();
-			progress = null;
-			try {
-				sendMailWorker.get();
-			} catch (final InterruptedException e) {
-				throw new IllegalStateException("Cannot happen", e);
-			} catch (final ExecutionException e) {
-				final Throwable cause = e.getCause();
-				log.error("Cannot send mail", cause);
-				notifier.showError(cause);
-			}
-		}
-	}
-
-	private boolean isDone(PropertyChangeEvent event) {
-		return "state".equals(event.getPropertyName())
-				&& DONE.equals(event.getNewValue());
-	}
+    private boolean isDone(PropertyChangeEvent event) {
+	return "state".equals(event.getPropertyName()) && DONE.equals(event.getNewValue());
+    }
 }
 
 class SendMailWorker extends SwingWorker<Void, Void> {
-	private final NewsletterNotification notification;
+    private final NewsletterNotification notification;
+    private final ToolMailSender toolMailSender;
 
-	SendMailWorker(NewsletterNotification notification) {
-		this.notification = notification;
-	}
+    SendMailWorker(NewsletterNotification notification, ToolMailSender toolMailSender) {
+	this.notification = notification;
+	this.toolMailSender = toolMailSender;
+    }
 
-	@Override
-	protected Void doInBackground() {
-		notification.processNotification();
-		return null;
-	}
+    @Override
+    protected Void doInBackground() {
+	toolMailSender.sendMail(notification);
+	return null;
+    }
 }
