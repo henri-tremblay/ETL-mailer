@@ -9,7 +9,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>
-		<spring.version>3.1.0.RELEASE</spring.version>
+		<scala.version>2.9.1-1</scala.version>
+		<spring.version>3.1.1.RELEASE</spring.version>
 		<cglib.version>2.2.2</cglib.version>
 		<persistence-api.version>1.0</persistence-api.version>
 		<aspectj.version>1.6.11</aspectj.version>
@@ -34,6 +35,12 @@
 		<commons-logging.version>1.1.1</commons-logging.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>${scala.version}</version>
+		</dependency>
+
 		<!-- Spring and friends -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -79,6 +86,12 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.scalatest</groupId>
+			<artifactId>scalatest_2.9.1-1</artifactId>
+			<version>1.7.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -215,12 +228,46 @@
 					<outxml>true</outxml>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>scala-compile-first</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>scala-test-compile</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
 					<configuration>
 						<compilerVersion>${java.version}</compilerVersion>
 						<fork>true</fork>
@@ -231,6 +278,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.4.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.scala-tools</groupId>
+					<artifactId>maven-scala-plugin</artifactId>
+					<version>2.15.2</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
