@@ -19,11 +19,12 @@
 		<logback.version>1.0.0</logback.version>
 		<groovy.version>1.8.6</groovy.version>
 		<junit.version>4.10</junit.version>
+		<scalatest.version>1.7.1</scalatest.version>
 		<easymock.version>3.1</easymock.version>
 		<fest-assert.version>1.4</fest-assert.version>
 		<velocity.version>1.7</velocity.version>
 		<velocity-tools.version>2.0</velocity-tools.version>
-		<javax.mail.version>1.4.4</javax.mail.version>
+		<javax.mail.version>1.4.5</javax.mail.version>
 		<guava.version>11.0.1</guava.version>
 		<jsoup.version>1.6.1</jsoup.version>
 		<miglayout.version>4.2</miglayout.version>
@@ -90,8 +91,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_2.9.1-1</artifactId>
-			<version>1.7.1</version>
+			<artifactId>scalatest_${scala.version}</artifactId>
+			<version>${scalatest.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

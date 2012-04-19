@@ -34,6 +34,11 @@ class EngineLessToolMailSender extends ToolMailSender {
   def velocityEngine(resourcesDirectory: String): VelocityEngine = null
 }
 
+object Mockery {
+  @Bean
+  def propertyPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer
+}
+
 @Configuration
 @PropertySource(Array("classpath:mailTool.properties"))
 class Mockery extends EasyMockSupport with EasyMockSugar {
@@ -45,11 +50,6 @@ class Mockery extends EasyMockSupport with EasyMockSugar {
 
   @Bean
   def toolContext = mock[ToolContext]
-}
-
-object Mockery {
-  @Bean
-  def propertyPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer
 }
 
 @RunWith(classOf[JUnitRunner])
