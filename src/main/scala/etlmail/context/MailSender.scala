@@ -23,10 +23,10 @@ class MailSender extends JavaMailSender {
     asProperties)
 
   private def reconfigure(): JavaMailSender = {
-    bean.setHost(configuration.getHost)
-    bean.setPort(configuration.getPort)
-    bean.setUsername(configuration.getUsername)
-    bean.setPassword(configuration.getPassword)
+    bean.setHost(configuration.host)
+    bean.setPort(configuration.port)
+    bean.setUsername(configuration.username)
+    bean.setPassword(configuration.password)
     bean
   }
 

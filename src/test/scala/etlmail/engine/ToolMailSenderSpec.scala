@@ -65,66 +65,76 @@ class ToolMailSenderSpec extends FlatSpec with ShouldMatchers with EasyMockSugar
   @Autowired var mockery: Mockery = _
 
   "sendMail" should "call JavaMailSender" in {
-    // Setup
+    // given
     expecting {
       javaMailSenderMock.send(anyObject(classOf[MimeMessagePreparator]))
     }
     mockery.replayAll()
 
-    // Test
+    // when
     toolMailSender.sendMail(null)
 
-    // Assertions
+    // then
     mockery.verifyAll()
   }
 
   "toStringArray with a 2 element list" should "yield an array with both elements" in {
-    // setup
+    // given
     val strings = Arrays.asList("string1", "string2")
 
-    // test
-    val stringArray: Array[String] = toolMailSender.toStringArray(strings)
+    // when
+    val stringArray = toolMailSender.toStringArray(strings)
 
-    // assertions
+    // then
     stringArray should be(Array("string1", "string2"))
   }
 
   "toStringArray without a list" should "yield an empty array" in {
-    // setup
+    // given
     val strings = null
 
-    // test
+    // when
     val stringArray = toolMailSender.toStringArray(strings)
 
-    // assertions
+    // then
     stringArray should have length (0)
   }
 
   "getAddressesFromString" should "split a string on commas, ignoring optional finishing commas" in {
-    // Setup
+    // given
     val addresses = "aaa@aaa.com, BBB@bbb.com,ccc@ccc.com,"
 
-    // Test
+    // when
     val addressList = toolMailSender.getAddressesFromString(addresses)
 
-    // Assertions
+    // then
     addressList should have size (3)
     addressList should contain("aaa@aaa.com")
     addressList should contain("bbb@bbb.com")
     addressList should contain("ccc@ccc.com")
+  }
 
+  "getAddressesFromString" should "work with empty lists" in {
+    // given
     val addressesEmpty = ""
+
+    // when
     val addressListEmpty = toolMailSender.getAddressesFromString(addressesEmpty)
+
+    // then
     addressListEmpty should be('empty)
   }
 
   "convertImagesToCid with duplicate images" should "only keep 1" in {
+    // given
     val document = new Document("")
     document.appendElement("img").attr("src", "gnu.gif")
     document.appendElement("img").attr("src", "gnu.gif")
 
+    // when
     val imageNames = toolMailSender.convertImagesToCid(document)
 
+    // then
     imageNames should have size (1)
   }
 }

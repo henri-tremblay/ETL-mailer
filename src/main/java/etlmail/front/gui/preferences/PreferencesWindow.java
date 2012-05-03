@@ -37,12 +37,12 @@ public class PreferencesWindow extends FrameHolder {
 		""));
 
 	container.add(new JLabel("Host"));
-	container.add(new JTextField(serverConfiguration.getHostDocument(), null, 20), "wrap");
+	container.add(new JTextField(serverConfiguration.hostDocument(), null, 20), "wrap");
 
 	container.add(new JLabel("Port"));
-	container.add(new JTextField(serverConfiguration.getPortDocument(), null, 20), "wrap");
+	container.add(new JTextField(serverConfiguration.portDocument(), null, 20), "wrap");
 
 	container.add(new JLabel("User"));
-	container.add(new JTextField(serverConfiguration.getUserDocument(), null, 20), "wrap");
+	container.add(new JTextField(serverConfiguration.usernameDocument(), null, 20), "wrap");
     }
 }

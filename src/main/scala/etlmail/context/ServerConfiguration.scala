@@ -1,11 +1,11 @@
 package etlmail.context
 
 trait ServerConfiguration {
-  def getHost(): String
+  def host(): String
 
-  def getPort(): Int
+  def port(): Int
 
-  def getUsername(): String
+  def username(): String
 
-  def getPassword(): String
+  def password(): String
 }

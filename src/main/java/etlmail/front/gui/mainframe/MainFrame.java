@@ -7,10 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.annotation.PostConstruct;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.text.Document;
 
 import net.miginfocom.swing.MigLayout;
@@ -50,7 +47,7 @@ public class MainFrame extends FrameHolder {
     public void init() {
 	fileButton = new JButton("\u2026");
 	sendButton = new JButton("Send");
-	makeLayout(frame.getContentPane(), serverConfiguration.getPasswordDocument());
+	makeLayout(frame.getContentPane(), serverConfiguration.passwordDocument());
 	addButtonActions();
 	frame.setTitle("Mailer GUI");
 	frame.setResizable(false);
@@ -71,17 +68,17 @@ public class MainFrame extends FrameHolder {
 		""));
 
 	container.add(new JLabel("Template"));
-	container.add(new JTextField(notificationBuilder.getTemplate(), null, 20), "split");
+	container.add(new JTextField(notificationBuilder.templateDocument(), null, 20), "split");
 	container.add(fileButton, "wrap, grow 0");
 
 	container.add(new JLabel("Subject"));
-	container.add(new JTextField(notificationBuilder.getSubject(), null, 20), "wrap");
+	container.add(new JTextField(notificationBuilder.subjectDocument(), null, 20), "wrap");
 
 	container.add(new JLabel("From"));
-	container.add(new JTextField(notificationBuilder.getFrom(), null, 20), "wrap");
+	container.add(new JTextField(notificationBuilder.fromDocument(), null, 20), "wrap");
 
 	container.add(new JLabel("To"));
-	container.add(new JTextField(notificationBuilder.getTo(), null, 20), "wrap");
+	container.add(new JTextField(notificationBuilder.toDocument(), null, 20), "wrap");
 
 	container.add(new JLabel("Password"));
 	container.add(new JPasswordField(password, null, 20), "wrap");
@@ -90,7 +87,7 @@ public class MainFrame extends FrameHolder {
     }
 
     private void addButtonActions() {
-	fileButton.addActionListener(new ChooseFileAction(new FileDocumentChooser(notificationBuilder.getTemplate()), frame));
+	fileButton.addActionListener(new ChooseFileAction(new FileDocumentChooser(notificationBuilder.templateDocument()), frame));
 	sendButton.addActionListener(sendMailAction);
 	frame.getRootPane().setDefaultButton(sendButton);
     }
