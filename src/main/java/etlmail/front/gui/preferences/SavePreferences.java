@@ -1,6 +1,13 @@
 package etlmail.front.gui.preferences;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +30,7 @@ public class SavePreferences implements ApplicationListener<ShutdownEvent> {
 
 	private static final String TO = "to";
 	private static final String FROM = "from";
+	private static final String CC = "cc";
 	private static final String SUBJECT = "subject";
 	private static final String TEMPLATE = "template";
 
@@ -62,6 +70,7 @@ public class SavePreferences implements ApplicationListener<ShutdownEvent> {
 	private void fromProperties(final Properties restored) {
 		notificationBuilder.to(restored.getProperty(TO));
 		notificationBuilder.from(restored.getProperty(FROM));
+		notificationBuilder.cc(restored.getProperty(CC));
 		notificationBuilder.subject(restored.getProperty(SUBJECT));
 		final String template = restored.getProperty(TEMPLATE);
 		if (template != null) {
@@ -86,6 +95,7 @@ public class SavePreferences implements ApplicationListener<ShutdownEvent> {
 		final Properties toSave = new Properties();
 		toSave.setProperty(TO, notificationBuilder.to());
 		toSave.setProperty(FROM, notificationBuilder.from());
+		toSave.setProperty(CC, notificationBuilder.cc());
 		toSave.setProperty(SUBJECT, notificationBuilder.subject());
 		toSave.setProperty(TEMPLATE, notificationBuilder.template().getPath());
 

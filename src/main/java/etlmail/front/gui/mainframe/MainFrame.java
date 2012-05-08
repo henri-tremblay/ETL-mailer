@@ -93,6 +93,10 @@ public class MainFrame extends FrameHolder {
 		container.add(new JTextField(notificationBuilder.getTo(), null, 20),
 				"wrap");
 
+		container.add(new JLabel("Cc"));
+		container.add(new JTextField(notificationBuilder.getCc(), null, 20),
+				"wrap");
+
 		container.add(new JLabel("Password"));
 		container.add(new JPasswordField(password, null, 20), "wrap");
 

@@ -26,10 +26,13 @@ public class NewsletterNotificationBuilder {
 	private final Document fromDocument = new DefaultStyledDocument();
 	private final Document toDocument = new DefaultStyledDocument();
 
+	private final Document ccDocument = new DefaultStyledDocument();
+
 	private volatile String subject = "";
 	private volatile File template = new File("");
 	private volatile String from = "";
 	private volatile String to = "";
+	private volatile String cc = "";
 
 	private final Map<String, Object> variables = new HashMap<String, Object>();
 
@@ -60,6 +63,12 @@ public class NewsletterNotificationBuilder {
 			@Override
 			protected void update(String newText) {
 				to = newText;
+			}
+		});
+		ccDocument.addDocumentListener(new DocumentAdapter() {
+			@Override
+			protected void update(String newText) {
+				cc = newText;
 			}
 		});
 	}
@@ -135,7 +144,19 @@ public class NewsletterNotificationBuilder {
 		return to;
 	}
 
+	public Document getCc() {
+		return ccDocument;
+	}
+
+	/**
+	 * Only call from the EDT
+	 */
+	public NewsletterNotificationBuilder cc(String cc) {
+		setText(ccDocument, cc);
+		return this;
+	}
+
 	public String cc() {
-		return "";
+		return cc;
 	}
 }
