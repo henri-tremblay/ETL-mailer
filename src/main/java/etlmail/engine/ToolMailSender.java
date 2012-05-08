@@ -122,7 +122,7 @@ public abstract class ToolMailSender {
             }
 			imageNames.add(source);
 			image.attr("src", "cid:" + source);
-			log.debug("Convert image to cid :" + source);
+            log.debug("Convert image to cid : {}", source);
 		}
 		return imageNames;
 	}
