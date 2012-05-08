@@ -23,6 +23,7 @@ public class FrameHolder {
 
 	public void show() {
 		frame.pack();
+        frame.setLocationByPlatform(true);
 		frame.setVisible(true);
 	}
 
