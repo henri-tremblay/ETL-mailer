@@ -117,9 +117,12 @@ public abstract class ToolMailSender {
 		final Set<String> imageNames = new HashSet<String>();
 		for (final Element image : doc.select("img")) {
 			final String source = image.attr("src");
+            if (source == null || source.startsWith("http://")) {
+                continue;
+            }
 			imageNames.add(source);
 			image.attr("src", "cid:" + source);
-			log.debug("Convert image to cid :" + source);
+            log.debug("Convert image to cid : {}", source);
 		}
 		return imageNames;
 	}
