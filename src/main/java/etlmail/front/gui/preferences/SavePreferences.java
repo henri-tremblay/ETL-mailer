@@ -18,7 +18,7 @@ import etlmail.front.gui.application.ShutdownEvent;
 import etlmail.front.gui.sendmail.NewsletterNotificationBuilder;
 
 @Component
-public class SavePrefences implements ApplicationListener<ShutdownEvent> {
+public class SavePreferences implements ApplicationListener<ShutdownEvent> {
 	private static final String FILENAME = "mailgui.properties";
 
 	private static final String TO = "to";
@@ -31,7 +31,7 @@ public class SavePrefences implements ApplicationListener<ShutdownEvent> {
 	private static final String USER = "user";
 
 	private static final Logger log = LoggerFactory
-			.getLogger(SavePrefences.class);
+			.getLogger(SavePreferences.class);
 
 	private @Autowired
 	NewsletterNotificationBuilder notificationBuilder;
